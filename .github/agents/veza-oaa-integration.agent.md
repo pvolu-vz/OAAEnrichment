@@ -1,5 +1,5 @@
 ---
-name: "Veza OAA Integration Script"
+name: "Veza OAA Agent"
 description: "Use when building a new Veza OAA (Open Authorization API) connector or integration script to push identity and permission data into Veza's Access Graph. Trigger phrases: OAA connector, OAA integration, push to Veza, Veza provider, CustomApplication, identity data, permission data, REST API connector, CSV to Veza, database connector, data lake connector, HR system integration."
 argument-hint: "What system are you integrating? (e.g., HR system via REST API, AD groups from CSV, Oracle DB roles via sqlalchemy)"
 tools: [web, search, read, edit, agent, todo]
@@ -34,6 +34,10 @@ Before writing any code, clarify these if not already provided:
 5. **Veza provider name** — What to call the provider in Veza's UI?
 6. **Multiple instances?** — Will this run against multiple tenants or environments?
 7. **Data sample** — Do you have a sample of the source data? (e.g., CSV export, JSON API response snippet, SQL schema dump, XLSX with headers). If yes, drop the file(s) into `./integrations/<slug>/samples/` before continuing — the agent will read them to infer field names, entity structure, and permission values automatically.
+
+If Data source is a flat file (e.g. CSV) make sure to place a representative sample in the `./integrations/<system_slug>/samples/` directory before proceeding and it should contain at least a few rows of data to allow the agent to infer the schema. 
+
+Do not proceed to step 2 until you have a clear understanding of the data source, if flat files are used, ensure you know the file format, structure, location (local or remote). if remote, ensure you know protocol and how to get to the file or ask the developer for clarification.
 
 If the user's argument provides enough detail, proceed directly to Step 2.
 

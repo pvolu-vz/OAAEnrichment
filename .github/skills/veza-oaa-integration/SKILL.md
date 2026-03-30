@@ -38,6 +38,10 @@ Before writing any code, clarify these if not already provided in the argument:
 6. **Multiple instances?** — Will this run against multiple tenants or environments?
 7. **Data sample** — Do you have a sample of the source data? (e.g., CSV export, JSON API response snippet, SQL schema dump, XLSX with headers). If yes, drop the file(s) into `./integrations/<slug>/samples/` before continuing — the agent will read them to infer field names, entity structure, and permission values automatically.
 
+If Data source is a flat file (e.g. CSV) make sure to place a representative sample in the `./integrations/<system_slug>/samples/` directory before proceeding and it should contain at least a few rows of data to allow the agent to infer the schema. 
+
+Do not proceed to step 2 until you have a clear understanding of the data source, if flat files are used, ensure you know the file format, structure, location (local or remote). if remote, ensure you know protocol and how to get to the file or ask the developer for clarification.
+
 If the user's argument provides enough detail, proceed directly to Step 2.
 
 ### Data Sample Discovery
