@@ -192,3 +192,4 @@ Write comprehensive documentation covering all of the following sections:
 9. **Security Considerations** — credential rotation, file permissions, SELinux/AppArmor
 10. **Troubleshooting** — auth failures, connectivity issues, missing modules, Veza push warnings
 11. **Changelog** — v1.0 initial release
+
