@@ -99,6 +99,7 @@ python3 azure_oaa_enrichment.py [OPTIONS]
 | `--provider-name NAME` | No | `ENRICHMENT_PROVIDER_NAME` env var or `Azure Email Enrichment` | Name for the enrichment provider (`entity_enrichment` template) |
 | `--provider-id ID` | No | `ENRICHMENT_PROVIDER_ID` env var | Existing provider ID — skips name-based lookup/creation |
 | `--data-source-name NAME` | No | `ENRICHMENT_DATA_SOURCE_NAME` env var or `Azure Email Enrichment` | Data source name for the enrichment payload |
+| `--azure-datasource-name NAME` | No | `AZURE_DATASOURCE_NAME` env var | Filter to a specific Azure AD datasource — only enrich users from this tenant |
 | `--env-file PATH` | No | `.env` | Path to a dotenv credentials file |
 | `--dry-run` | No | `False` | Preview payload without pushing to Veza |
 | `--save-json` | No | `False` | Save enrichment payload to a local JSON file |
@@ -117,6 +118,7 @@ python3 azure_oaa_enrichment.py [OPTIONS]
 | `ENRICHMENT_PROVIDER_NAME` | Enrichment provider name (default: `Azure Email Enrichment`) |
 | `ENRICHMENT_PROVIDER_ID` | Existing provider ID — set to skip name-based lookup/creation |
 | `ENRICHMENT_DATA_SOURCE_NAME` | Data source name under the provider (default: `Azure Email Enrichment`) |
+| `AZURE_DATASOURCE_NAME` | Filter to a specific Azure AD datasource by name — only enrich users from this tenant |
 
 ### Example Commands
 
@@ -135,6 +137,9 @@ python3 azure_oaa_enrichment.py --idp-domain example.com
 
 # Use an existing provider ID (skips name lookup)
 python3 azure_oaa_enrichment.py --provider-id abc123-def456
+
+# Only enrich users from a specific Azure AD tenant
+python3 azure_oaa_enrichment.py --azure-datasource-name "Contoso Azure AD"
 
 # Use a non-default .env file
 python3 azure_oaa_enrichment.py --env-file /etc/azure-oaa-enrichment/prod.env

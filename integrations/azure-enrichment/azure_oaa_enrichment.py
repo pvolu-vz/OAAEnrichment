@@ -3,18 +3,19 @@
 Azure AD User Email Enrichment — Veza OAA Enrichment Script
 
 Queries all AzureADUser entities from a Veza tenant, constructs a new custom
-attribute called `OAA_idp` by taking each user's `principal_name` and replacing
+attribute called `manager_OAA_idp` by taking each user's `manager_principal_name` and replacing
 the domain portion (everything after @) with a configurable IDP domain, then
 pushes the enriched values back to Veza via the OAA Enrichment
 (entity_enrichment) template.
 
 Data flow:
-  Veza (AzureADUser entities)  →  derive OAA_idp = local_part(principal_name) + @IDP_DOMAIN  →  Veza (enriched attribute)
+  Veza (AzureADUser entities)  →  derive manager_OAA_idp = local_part(manager_principal_name) + @IDP_DOMAIN  →  Veza (enriched attribute)
 """
 
 import argparse
 import json
 import logging
+import math
 import os
 import sys
 
@@ -31,6 +32,8 @@ DEFAULT_ENTITY_TYPE = "AzureADUser"
 DEFAULT_IDP_DOMAIN = "smurfitwestrock.com"
 DEFAULT_PROVIDER_NAME = "Azure Email Enrichment"
 DEFAULT_DATA_SOURCE_NAME = "Azure Email Enrichment"
+DEFAULT_AZURE_DATASOURCE_NAME: Optional[str] = None
+PUSH_BATCH_SIZE = 10_000  # Max entities per push_metadata call to avoid timeouts
 
 # ---------------------------------------------------------------------------
 # Logging setup
@@ -50,16 +53,17 @@ log = logging.getLogger(__name__)
 
 class AzureEmailEnrichment:
     """
-    Queries Veza for all AzureADUser entities, builds a `OAA_idp` value
-    from each user's principal_name (replacing the domain), and provides
+    Queries Veza for all AzureADUser entities, builds a `manager_OAA_idp` value
+    from each user's manager_principal_name (replacing the domain), and provides
     a push-ready payload for the OAA Enrichment endpoint.
     """
 
-    def __init__(self, veza_client: OAAClient, idp_domain: str = DEFAULT_IDP_DOMAIN, entity_type: str = DEFAULT_ENTITY_TYPE) -> None:
+    def __init__(self, veza_client: OAAClient, idp_domain: str = DEFAULT_IDP_DOMAIN, entity_type: str = DEFAULT_ENTITY_TYPE, azure_datasource_name: Optional[str] = None) -> None:
         self._veza_client = veza_client
         self._idp_domain = idp_domain
         self.entity_type = entity_type
-        # Maps entity_id -> {data_source_id, principal_name, OAA_idp}
+        self._azure_datasource_name = azure_datasource_name
+        # Maps entity_id -> {data_source_id, manager_principal_name, manager_OAA_idp}
         self._enriched_users: dict = {}
 
     # ------------------------------------------------------------------
@@ -81,7 +85,7 @@ class AzureEmailEnrichment:
                 {
                     "entity_type": self.entity_type,
                     "enriched_properties": {
-                        "OAA_idp": "STRING",
+                        "manager_OAA_idp": "STRING",
                     },
                 },
             ],
@@ -91,7 +95,7 @@ class AzureEmailEnrichment:
                     "id": entity_id,
                     "data_source_id": values["data_source_id"],
                     "properties": {
-                        "OAA_idp": values["OAA_idp"],
+                        "manager_OAA_idp": values["manager_OAA_idp"],
                     },
                 }
                 for entity_id, values in self._enriched_users.items()
@@ -127,6 +131,8 @@ class AzureEmailEnrichment:
         }
 
         log.info("Querying Veza for all %s entities (page_size=10000)...", self.entity_type)
+        # NOTE: oaaclient.api_post auto-paginates (follows has_more / next_page_token)
+        # so all entities are returned even if the total exceeds page_size.
 
         try:
             entities = self._veza_client.api_post(
@@ -151,6 +157,11 @@ class AzureEmailEnrichment:
 
         skipped_no_datasource = 0
         skipped_no_principal_name = 0
+        skipped_datasource_mismatch = 0
+        datasource_name_found = False
+
+        if self._azure_datasource_name:
+            log.info("Filtering entities to Azure datasource: '%s'", self._azure_datasource_name)
 
         for entity in entity_list:
             entity_id = entity.get("id")
@@ -166,28 +177,44 @@ class AzureEmailEnrichment:
                 skipped_no_datasource += 1
                 continue
 
-            principal_name = props.get("principal_name")
-            if not principal_name:
-                log.debug("Skipping entity %s: missing principal_name (props: %s)", entity_id, list(props.keys()))
+            # Filter by Azure datasource name if configured
+            if self._azure_datasource_name:
+                entity_datasource_name = props.get("datasource_name") or props.get("data_source_name")
+                if entity_datasource_name:
+                    datasource_name_found = True
+                    if entity_datasource_name != self._azure_datasource_name:
+                        log.debug("Skipping entity %s: datasource '%s' does not match '%s'", entity_id, entity_datasource_name, self._azure_datasource_name)
+                        skipped_datasource_mismatch += 1
+                        continue
+                elif not datasource_name_found:
+                    log.warning("Entity %s has no datasource_name property. Available props: %s", entity_id, list(props.keys()))
+
+            manager_principal_name = props.get("manager_principal_name")
+            if not manager_principal_name:
+                log.debug("Skipping entity %s: missing manager_principal_name (props: %s)", entity_id, list(props.keys()))
                 skipped_no_principal_name += 1
                 continue
 
-            # Replace the domain portion of principal_name with the configured IDP domain
-            local_part = principal_name.split("@")[0] if "@" in principal_name else principal_name
-            oaa_idp = f"{local_part}@{self._idp_domain}"
+            # Replace the domain portion of manager_principal_name with the configured IDP domain
+            local_part = manager_principal_name.split("@")[0] if "@" in manager_principal_name else manager_principal_name
+            manager_oaa_idp = f"{local_part}@{self._idp_domain}"
 
             self._enriched_users[entity_id] = {
                 "data_source_id": datasource_id,
-                "principal_name": principal_name,
-                "OAA_idp": oaa_idp,
+                "manager_principal_name": manager_principal_name,
+                "manager_OAA_idp": manager_oaa_idp,
             }
 
-            log.debug("Prepared: entity_id=%s  principal_name=%s  OAA_idp=%s", entity_id, principal_name, oaa_idp)
+            log.debug("Prepared: entity_id=%s  manager_principal_name=%s  manager_OAA_idp=%s", entity_id, manager_principal_name, manager_oaa_idp)
 
         if skipped_no_datasource:
             log.warning("Skipped %d entities with no datasource_id", skipped_no_datasource)
         if skipped_no_principal_name:
-            log.warning("Skipped %d entities with no principal_name", skipped_no_principal_name)
+            log.warning("Skipped %d entities with no manager_principal_name", skipped_no_principal_name)
+        if skipped_datasource_mismatch:
+            log.info("Skipped %d entities not matching datasource '%s'", skipped_datasource_mismatch, self._azure_datasource_name)
+        if self._azure_datasource_name and not datasource_name_found:
+            log.warning("No entities had a datasource_name property — datasource filter had no effect. Run with --log-level DEBUG to inspect available properties.")
 
         log.info(
             "Enrichment ready for %d / %d Azure AD users",
@@ -210,6 +237,7 @@ def run(
     data_source_name: str = DEFAULT_DATA_SOURCE_NAME,
     provider_id: Optional[str] = None,
     entity_type: str = DEFAULT_ENTITY_TYPE,
+    azure_datasource_name: Optional[str] = None,
 ) -> None:
     """
     Main execution: query users, build enrichment payload, push to Veza.
@@ -217,8 +245,9 @@ def run(
 
     log.info("Connecting to Veza at %s", veza_host)
     veza = OAAClient(url=veza_host, api_key=veza_api_key)
+    veza.enable_multipart = True  # Safety net for very large enrichment payloads
 
-    enrichment = AzureEmailEnrichment(veza_client=veza, idp_domain=idp_domain, entity_type=entity_type)
+    enrichment = AzureEmailEnrichment(veza_client=veza, idp_domain=idp_domain, entity_type=entity_type, azure_datasource_name=azure_datasource_name)
     enrichment.process()
 
     if not enrichment.has_enriched_entities():
@@ -254,29 +283,59 @@ def run(
             provider_id = provider["id"]
             log.info("Created enrichment provider '%s' (id: %s)", provider_name, provider_id)
 
-    # Push enrichment data
-    try:
-        veza.push_metadata(
-            provider_name=provider_name,
-            data_source_name=data_source_name,
-            metadata=payload,
-            save_json=save_json,
-        )
+    # Push enrichment data in batches to avoid timeouts / payload size limits.
+    # Each batch is pushed to a distinct data source name so that subsequent
+    # batches do not overwrite earlier ones (push_metadata replaces the full
+    # data source on each call).
+    all_entities = payload["enriched_entities"]
+    property_defs = payload["enriched_entity_property_definitions"]
+    total_batches = math.ceil(entity_count / PUSH_BATCH_SIZE)
+
+    for batch_idx in range(total_batches):
+        start = batch_idx * PUSH_BATCH_SIZE
+        end = min(start + PUSH_BATCH_SIZE, entity_count)
+        batch_entities = all_entities[start:end]
+
+        # Use the original name for single-batch runs; append suffix otherwise
+        if total_batches == 1:
+            ds_name = data_source_name
+        else:
+            ds_name = f"{data_source_name} (batch {batch_idx + 1}/{total_batches})"
+
+        batch_payload = {
+            "enriched_entity_property_definitions": property_defs,
+            "enriched_entities": batch_entities,
+        }
+
         log.info(
-            "Successfully pushed OAA_idp enrichment for %d Azure AD users to Veza",
-            entity_count,
+            "Pushing batch %d/%d (%d entities) to data source '%s'...",
+            batch_idx + 1, total_batches, len(batch_entities), ds_name,
         )
-    except OAAResponseError as exc:
-        log.error(
-            "Veza push_metadata failed: %s — %s (HTTP %s)",
-            exc.error,
-            exc.message,
-            exc.status_code,
-        )
-        if hasattr(exc, "details"):
-            for detail in exc.details:
-                log.error("  Detail: %s", detail)
-        sys.exit(1)
+
+        try:
+            veza.push_metadata(
+                provider_name=provider_name,
+                data_source_name=ds_name,
+                metadata=batch_payload,
+                save_json=save_json,
+            )
+        except OAAResponseError as exc:
+            log.error(
+                "Veza push_metadata failed (batch %d/%d): %s — %s (HTTP %s)",
+                batch_idx + 1, total_batches,
+                exc.error,
+                exc.message,
+                exc.status_code,
+            )
+            if hasattr(exc, "details"):
+                for detail in exc.details:
+                    log.error("  Detail: %s", detail)
+            sys.exit(1)
+
+    log.info(
+        "Successfully pushed manager_OAA_idp enrichment for %d Azure AD users to Veza (%d batch%s)",
+        entity_count, total_batches, "es" if total_batches > 1 else "",
+    )
 
 
 # ---------------------------------------------------------------------------
@@ -286,8 +345,8 @@ def run(
 def parse_args() -> argparse.Namespace:
     parser = argparse.ArgumentParser(
         description=(
-            "Enrich AzureADUser entities in Veza with a derived `OAA_idp` "
-            "attribute built from principal_name with domain replacement."
+            "Enrich AzureADUser entities in Veza with a derived `manager_OAA_idp` "
+            "attribute built from manager_principal_name with domain replacement."
         ),
         formatter_class=argparse.ArgumentDefaultsHelpFormatter,
     )
@@ -335,6 +394,12 @@ def parse_args() -> argparse.Namespace:
         help="Data source name for the enrichment payload (or set ENRICHMENT_DATA_SOURCE_NAME env var).",
     )
     parser.add_argument(
+        "--azure-datasource-name",
+        default=None,
+        metavar="NAME",
+        help="Filter to a specific Azure AD datasource by name — only enrich users from this tenant (or set AZURE_DATASOURCE_NAME env var).",
+    )
+    parser.add_argument(
         "--dry-run",
         action="store_true",
         help="Build and preview the enrichment payload without pushing to Veza.",
@@ -379,6 +444,7 @@ def load_config(args: argparse.Namespace) -> dict:
     provider_name = args.provider_name or os.getenv("ENRICHMENT_PROVIDER_NAME") or DEFAULT_PROVIDER_NAME
     provider_id = args.provider_id or os.getenv("ENRICHMENT_PROVIDER_ID") or None
     data_source_name = args.data_source_name or os.getenv("ENRICHMENT_DATA_SOURCE_NAME") or DEFAULT_DATA_SOURCE_NAME
+    azure_datasource_name = args.azure_datasource_name or os.getenv("AZURE_DATASOURCE_NAME") or None
 
     return {
         "veza_host": veza_host,
@@ -388,6 +454,7 @@ def load_config(args: argparse.Namespace) -> dict:
         "provider_name": provider_name,
         "provider_id": provider_id,
         "data_source_name": data_source_name,
+        "azure_datasource_name": azure_datasource_name,
     }
 
 
@@ -396,7 +463,7 @@ def main() -> None:
         "\n"
         "  ╔══════════════════════════════════════════════════════════╗\n"
         "  ║   Azure AD → Veza  |  OAA IDP Enrichment  v1.1         ║\n"
-        "  ║   Attribute: OAA_idp = principal_name + IDP domain        ║\n"
+        "  ║   Attribute: manager_OAA_idp = manager_principal_name + IDP  ║\n"
         "  ╚══════════════════════════════════════════════════════════╝\n"
     )
 
@@ -416,9 +483,10 @@ def main() -> None:
         data_source_name=config["data_source_name"],
         provider_id=config["provider_id"],
         entity_type=config["entity_type"],
+        azure_datasource_name=config["azure_datasource_name"],
     )
 
-    log.info("Azure AD OAA_idp enrichment completed.")
+    log.info("Azure AD manager_OAA_idp enrichment completed.")
 
 
 if __name__ == "__main__":
