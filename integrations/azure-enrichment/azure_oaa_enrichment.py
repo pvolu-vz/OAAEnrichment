@@ -3,13 +3,13 @@
 Azure AD User Email Enrichment — Veza OAA Enrichment Script
 
 Queries all AzureADUser entities from a Veza tenant, constructs a new custom
-attribute called `manager_OAA_idp` by taking each user's `principal_name` and replacing
+attribute called `OAA_idp` by taking each user's `principal_name` and replacing
 the domain portion (everything after @) with a configurable IDP domain, then
 pushes the enriched values back to Veza via the OAA Enrichment
 (entity_enrichment) template.
 
 Data flow:
-  Veza (AzureADUser entities)  →  derive manager_OAA_idp = local_part(principal_name) + @IDP_DOMAIN  →  Veza (enriched attribute)
+  Veza (AzureADUser entities)  →  derive OAA_idp = local_part(principal_name) + @IDP_DOMAIN  →  Veza (enriched attribute)
 """
 
 import argparse
@@ -50,7 +50,7 @@ log = logging.getLogger(__name__)
 
 class AzureEmailEnrichment:
     """
-    Queries Veza for all AzureADUser entities, builds a `manager_OAA_idp` value
+    Queries Veza for all AzureADUser entities, builds a `OAA_idp` value
     from each user's principal_name (replacing the domain), and provides
     a push-ready payload for the OAA Enrichment endpoint.
     """
@@ -59,7 +59,7 @@ class AzureEmailEnrichment:
         self._veza_client = veza_client
         self._idp_domain = idp_domain
         self.entity_type = entity_type
-        # Maps entity_id -> {data_source_id, principal_name, manager_OAA_idp}
+        # Maps entity_id -> {data_source_id, principal_name, OAA_idp}
         self._enriched_users: dict = {}
 
     # ------------------------------------------------------------------
@@ -81,7 +81,7 @@ class AzureEmailEnrichment:
                 {
                     "entity_type": self.entity_type,
                     "enriched_properties": {
-                        "manager_OAA_idp": "STRING",
+                        "OAA_idp": "STRING",
                     },
                 },
             ],
@@ -91,7 +91,7 @@ class AzureEmailEnrichment:
                     "id": entity_id,
                     "data_source_id": values["data_source_id"],
                     "properties": {
-                        "manager_OAA_idp": values["manager_OAA_idp"],
+                        "OAA_idp": values["OAA_idp"],
                     },
                 }
                 for entity_id, values in self._enriched_users.items()
@@ -174,15 +174,15 @@ class AzureEmailEnrichment:
 
             # Replace the domain portion of principal_name with the configured IDP domain
             local_part = principal_name.split("@")[0] if "@" in principal_name else principal_name
-            manager_oaa_idp = f"{local_part}@{self._idp_domain}"
+            oaa_idp = f"{local_part}@{self._idp_domain}"
 
             self._enriched_users[entity_id] = {
                 "data_source_id": datasource_id,
                 "principal_name": principal_name,
-                "manager_OAA_idp": manager_oaa_idp,
+                "OAA_idp": oaa_idp,
             }
 
-            log.debug("Prepared: entity_id=%s  principal_name=%s  manager_OAA_idp=%s", entity_id, principal_name, manager_oaa_idp)
+            log.debug("Prepared: entity_id=%s  principal_name=%s  OAA_idp=%s", entity_id, principal_name, oaa_idp)
 
         if skipped_no_datasource:
             log.warning("Skipped %d entities with no datasource_id", skipped_no_datasource)
@@ -263,7 +263,7 @@ def run(
             save_json=save_json,
         )
         log.info(
-            "Successfully pushed manager_OAA_idp enrichment for %d Azure AD users to Veza",
+            "Successfully pushed OAA_idp enrichment for %d Azure AD users to Veza",
             entity_count,
         )
     except OAAResponseError as exc:
@@ -286,7 +286,7 @@ def run(
 def parse_args() -> argparse.Namespace:
     parser = argparse.ArgumentParser(
         description=(
-            "Enrich AzureADUser entities in Veza with a derived `manager_OAA_idp` "
+            "Enrich AzureADUser entities in Veza with a derived `OAA_idp` "
             "attribute built from principal_name with domain replacement."
         ),
         formatter_class=argparse.ArgumentDefaultsHelpFormatter,
@@ -396,7 +396,7 @@ def main() -> None:
         "\n"
         "  ╔══════════════════════════════════════════════════════════╗\n"
         "  ║   Azure AD → Veza  |  OAA IDP Enrichment  v1.1         ║\n"
-        "  ║   Attribute: manager_OAA_idp = principal_name + IDP dom  ║\n"
+        "  ║   Attribute: OAA_idp = principal_name + IDP domain        ║\n"
         "  ╚══════════════════════════════════════════════════════════╝\n"
     )
 
@@ -418,7 +418,7 @@ def main() -> None:
         entity_type=config["entity_type"],
     )
 
-    log.info("Azure AD manager_OAA_idp enrichment completed.")
+    log.info("Azure AD OAA_idp enrichment completed.")
 
 
 if __name__ == "__main__":

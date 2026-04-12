@@ -14,7 +14,7 @@ REPO_URL="https://github.com/YOUR_ORG/YOUR_REPO.git"
 BRANCH="main"
 NON_INTERACTIVE=false
 OVERWRITE_ENV=false
-SCRIPT_SUBDIR="integrations/gico-enrichment"
+SCRIPT_SUBDIR="integrations/azure-enrichment"
 
 # ─────────────────────────────────────────────────────────────────────────────
 # Argument parsing

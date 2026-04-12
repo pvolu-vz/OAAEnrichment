@@ -38,7 +38,7 @@ After a successful run the `OAA_idp` attribute will be visible on each AzureADUs
 
 ```bash
 # 1. Clone or navigate to the integration directory
-cd integrations/gico-enrichment
+cd integrations/azure-enrichment
 
 # 2. Create and activate a virtual environment
 python3 -m venv venv
