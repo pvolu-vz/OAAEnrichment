@@ -1,14 +1,15 @@
 #!/usr/bin/env python3
 """
-GICO User Email Enrichment — Veza OAA Enrichment Script
+Azure AD User Email Enrichment — Veza OAA Enrichment Script
 
-Queries all OAA.GICO.User entities from a Veza tenant, constructs a new custom
-attribute called `new_email` by appending a configurable domain suffix to each
-user's `native_id`, then pushes the enriched values back to Veza via the OAA
-Enrichment (entity_enrichment) template.
+Queries all AzureADUser entities from a Veza tenant, constructs a new custom
+attribute called `manager_OAA_idp` by taking each user's `principal_name` and replacing
+the domain portion (everything after @) with a configurable IDP domain, then
+pushes the enriched values back to Veza via the OAA Enrichment
+(entity_enrichment) template.
 
 Data flow:
-  Veza (OAA.GICO.User entities)  →  derive new_email = native_id + domain  →  Veza (enriched attribute)
+  Veza (AzureADUser entities)  →  derive manager_OAA_idp = local_part(principal_name) + @IDP_DOMAIN  →  Veza (enriched attribute)
 """
 
 import argparse
@@ -17,16 +18,19 @@ import logging
 import os
 import sys
 
+from typing import Optional
+
 from dotenv import load_dotenv
 from oaaclient.client import OAAClient, OAAResponseError
 
 # ---------------------------------------------------------------------------
-# Constants
+# Defaults (overridden by .env / CLI args)
 # ---------------------------------------------------------------------------
 
-ENTITY_TYPE = "OAA.GICO.User"
-DEFAULT_EMAIL_DOMAIN = "@smurfitwestrock.com"
-PROVIDER_NAME = "GICO Email Enrichment"
+DEFAULT_ENTITY_TYPE = "AzureADUser"
+DEFAULT_IDP_DOMAIN = "smurfitwestrock.com"
+DEFAULT_PROVIDER_NAME = "Azure Email Enrichment"
+DEFAULT_DATA_SOURCE_NAME = "Azure Email Enrichment"
 
 # ---------------------------------------------------------------------------
 # Logging setup
@@ -44,19 +48,18 @@ log = logging.getLogger(__name__)
 # Enrichment class
 # ---------------------------------------------------------------------------
 
-class GICOEmailEnrichment:
+class AzureEmailEnrichment:
     """
-    Queries Veza for all OAA.GICO.User entities, builds a `new_email` value
-    from each user's native_id, and provides a push-ready payload for the
-    OAA Enrichment endpoint.
+    Queries Veza for all AzureADUser entities, builds a `manager_OAA_idp` value
+    from each user's principal_name (replacing the domain), and provides
+    a push-ready payload for the OAA Enrichment endpoint.
     """
 
-    entity_type = ENTITY_TYPE
-
-    def __init__(self, veza_client: OAAClient, email_domain: str = DEFAULT_EMAIL_DOMAIN) -> None:
+    def __init__(self, veza_client: OAAClient, idp_domain: str = DEFAULT_IDP_DOMAIN, entity_type: str = DEFAULT_ENTITY_TYPE) -> None:
         self._veza_client = veza_client
-        self._email_domain = email_domain
-        # Maps entity_id -> {data_source_id, native_id, new_email}
+        self._idp_domain = idp_domain
+        self.entity_type = entity_type
+        # Maps entity_id -> {data_source_id, principal_name, manager_OAA_idp}
         self._enriched_users: dict = {}
 
     # ------------------------------------------------------------------
@@ -65,7 +68,7 @@ class GICOEmailEnrichment:
 
     def process(self) -> None:
         """Query Veza and build the enrichment map."""
-        self._query_gico_users()
+        self._query_azure_users()
 
     def has_enriched_entities(self) -> bool:
         """Return True if at least one user was successfully enriched."""
@@ -78,7 +81,7 @@ class GICOEmailEnrichment:
                 {
                     "entity_type": self.entity_type,
                     "enriched_properties": {
-                        "new_email": "STRING",
+                        "manager_OAA_idp": "STRING",
                     },
                 },
             ],
@@ -88,7 +91,7 @@ class GICOEmailEnrichment:
                     "id": entity_id,
                     "data_source_id": values["data_source_id"],
                     "properties": {
-                        "new_email": values["new_email"],
+                        "manager_OAA_idp": values["manager_OAA_idp"],
                     },
                 }
                 for entity_id, values in self._enriched_users.items()
@@ -99,8 +102,8 @@ class GICOEmailEnrichment:
     # Private helpers
     # ------------------------------------------------------------------
 
-    def _query_gico_users(self) -> None:
-        """Call the Veza query API to fetch all OAA.GICO.User nodes."""
+    def _query_azure_users(self) -> None:
+        """Call the Veza query API to fetch all AzureADUser nodes."""
 
         query = {
             "no_relation": False,
@@ -147,7 +150,7 @@ class GICOEmailEnrichment:
         log.info("Received %d %s entities from Veza", len(entity_list), self.entity_type)
 
         skipped_no_datasource = 0
-        skipped_no_native_id = 0
+        skipped_no_principal_name = 0
 
         for entity in entity_list:
             entity_id = entity.get("id")
@@ -163,29 +166,31 @@ class GICOEmailEnrichment:
                 skipped_no_datasource += 1
                 continue
 
-            native_id = props.get("native_id")
-            if not native_id:
-                log.debug("Skipping entity %s: missing native_id (props: %s)", entity_id, list(props.keys()))
-                skipped_no_native_id += 1
+            principal_name = props.get("principal_name")
+            if not principal_name:
+                log.debug("Skipping entity %s: missing principal_name (props: %s)", entity_id, list(props.keys()))
+                skipped_no_principal_name += 1
                 continue
 
-            new_email = f"{native_id}{self._email_domain}"
+            # Replace the domain portion of principal_name with the configured IDP domain
+            local_part = principal_name.split("@")[0] if "@" in principal_name else principal_name
+            manager_oaa_idp = f"{local_part}@{self._idp_domain}"
 
             self._enriched_users[entity_id] = {
                 "data_source_id": datasource_id,
-                "native_id": native_id,
-                "new_email": new_email,
+                "principal_name": principal_name,
+                "manager_OAA_idp": manager_oaa_idp,
             }
 
-            log.debug("Prepared: entity_id=%s  native_id=%s  new_email=%s", entity_id, native_id, new_email)
+            log.debug("Prepared: entity_id=%s  principal_name=%s  manager_OAA_idp=%s", entity_id, principal_name, manager_oaa_idp)
 
         if skipped_no_datasource:
             log.warning("Skipped %d entities with no datasource_id", skipped_no_datasource)
-        if skipped_no_native_id:
-            log.warning("Skipped %d entities with no native_id", skipped_no_native_id)
+        if skipped_no_principal_name:
+            log.warning("Skipped %d entities with no principal_name", skipped_no_principal_name)
 
         log.info(
-            "Enrichment ready for %d / %d GICO users",
+            "Enrichment ready for %d / %d Azure AD users",
             len(self._enriched_users),
             len(entity_list),
         )
@@ -198,22 +203,26 @@ class GICOEmailEnrichment:
 def run(
     veza_host: str,
     veza_api_key: str,
-    email_domain: str,
+    idp_domain: str,
     save_json: bool,
     dry_run: bool,
+    provider_name: str = DEFAULT_PROVIDER_NAME,
+    data_source_name: str = DEFAULT_DATA_SOURCE_NAME,
+    provider_id: Optional[str] = None,
+    entity_type: str = DEFAULT_ENTITY_TYPE,
 ) -> None:
     """
-    Main execution: query GICO users, build enrichment payload, push to Veza.
+    Main execution: query users, build enrichment payload, push to Veza.
     """
 
     log.info("Connecting to Veza at %s", veza_host)
     veza = OAAClient(url=veza_host, api_key=veza_api_key)
 
-    enrichment = GICOEmailEnrichment(veza_client=veza, email_domain=email_domain)
+    enrichment = AzureEmailEnrichment(veza_client=veza, idp_domain=idp_domain, entity_type=entity_type)
     enrichment.process()
 
     if not enrichment.has_enriched_entities():
-        log.warning("No GICO users found to enrich — nothing to push.")
+        log.warning("No Azure AD users found to enrich — nothing to push.")
         return
 
     payload = enrichment.get_push_payload()
@@ -229,20 +238,21 @@ def run(
         log.info("[DRY RUN] Payload preview:\n%s", preview)
         return
 
-    provider_name = PROVIDER_NAME
-    data_source_name = provider_name
-
-    # Create or retrieve the enrichment provider
-    provider = veza.get_provider(name=provider_name)
-    if provider:
-        provider_id = provider["id"]
-        log.info("Using existing provider '%s' (id: %s)", provider_name, provider_id)
+    # Resolve provider: use explicit ID if given, otherwise lookup/create by name.
+    # The enrichment payload references existing entities by their graph IDs.
+    if provider_id:
+        log.info("Using provider ID from configuration: %s", provider_id)
     else:
-        provider = veza.create_provider(
-            name=provider_name, custom_template="entity_enrichment"
-        )
-        provider_id = provider["id"]
-        log.info("Created new provider '%s' (id: %s)", provider_name, provider_id)
+        provider = veza.get_provider(name=provider_name)
+        if provider:
+            provider_id = provider["id"]
+            log.info("Using existing enrichment provider '%s' (id: %s)", provider_name, provider_id)
+        else:
+            provider = veza.create_provider(
+                name=provider_name, custom_template="entity_enrichment"
+            )
+            provider_id = provider["id"]
+            log.info("Created enrichment provider '%s' (id: %s)", provider_name, provider_id)
 
     # Push enrichment data
     try:
@@ -253,7 +263,7 @@ def run(
             save_json=save_json,
         )
         log.info(
-            "Successfully pushed new_email enrichment for %d GICO users to Veza",
+            "Successfully pushed manager_OAA_idp enrichment for %d Azure AD users to Veza",
             entity_count,
         )
     except OAAResponseError as exc:
@@ -276,8 +286,8 @@ def run(
 def parse_args() -> argparse.Namespace:
     parser = argparse.ArgumentParser(
         description=(
-            "Enrich OAA.GICO.User entities in Veza with a derived `new_email` "
-            "attribute built from native_id + email domain suffix."
+            "Enrich AzureADUser entities in Veza with a derived `manager_OAA_idp` "
+            "attribute built from principal_name with domain replacement."
         ),
         formatter_class=argparse.ArgumentDefaultsHelpFormatter,
     )
@@ -295,16 +305,34 @@ def parse_args() -> argparse.Namespace:
         help="Veza tenant hostname, e.g. acme.veza.com (or set VEZA_URL).",
     )
     parser.add_argument(
-        "--email-domain",
-        default=DEFAULT_EMAIL_DOMAIN,
+        "--idp-domain",
+        default=None,
         metavar="DOMAIN",
-        help="Domain suffix appended to native_id to form new_email.",
+        help="IDP domain to replace the existing domain in principal_name (or set IDP_DOMAIN env var).",
+    )
+    parser.add_argument(
+        "--entity-type",
+        default=None,
+        metavar="TYPE",
+        help="Veza entity type to enrich (or set ENTITY_TYPE env var).",
     )
     parser.add_argument(
         "--provider-name",
-        default=PROVIDER_NAME,
+        default=None,
         metavar="NAME",
-        help="OAA provider name as it will appear in the Veza UI.",
+        help="Name for the enrichment provider (or set ENRICHMENT_PROVIDER_NAME env var).",
+    )
+    parser.add_argument(
+        "--provider-id",
+        default=None,
+        metavar="ID",
+        help="Existing provider ID to use — skips name-based lookup/creation (or set ENRICHMENT_PROVIDER_ID env var).",
+    )
+    parser.add_argument(
+        "--data-source-name",
+        default=None,
+        metavar="NAME",
+        help="Data source name for the enrichment payload (or set ENRICHMENT_DATA_SOURCE_NAME env var).",
     )
     parser.add_argument(
         "--dry-run",
@@ -345,19 +373,31 @@ def load_config(args: argparse.Namespace) -> dict:
         log.error("Missing required configuration: %s", ", ".join(missing))
         sys.exit(2)
 
+    # Resolve all config: CLI arg → env var → hardcoded default
+    idp_domain = args.idp_domain or os.getenv("IDP_DOMAIN") or DEFAULT_IDP_DOMAIN
+    entity_type = args.entity_type or os.getenv("ENTITY_TYPE") or DEFAULT_ENTITY_TYPE
+    provider_name = args.provider_name or os.getenv("ENRICHMENT_PROVIDER_NAME") or DEFAULT_PROVIDER_NAME
+    provider_id = args.provider_id or os.getenv("ENRICHMENT_PROVIDER_ID") or None
+    data_source_name = args.data_source_name or os.getenv("ENRICHMENT_DATA_SOURCE_NAME") or DEFAULT_DATA_SOURCE_NAME
+
     return {
         "veza_host": veza_host,
         "veza_api_key": veza_api_key,
+        "idp_domain": idp_domain,
+        "entity_type": entity_type,
+        "provider_name": provider_name,
+        "provider_id": provider_id,
+        "data_source_name": data_source_name,
     }
 
 
 def main() -> None:
     print(
         "\n"
-        "  ╔══════════════════════════════════════════════════════╗\n"
-        "  ║   GICO → Veza  |  OAA Email Enrichment  v1.0        ║\n"
-        "  ║   Attribute: new_email = native_id + domain          ║\n"
-        "  ╚══════════════════════════════════════════════════════╝\n"
+        "  ╔══════════════════════════════════════════════════════════╗\n"
+        "  ║   Azure AD → Veza  |  OAA IDP Enrichment  v1.1         ║\n"
+        "  ║   Attribute: manager_OAA_idp = principal_name + IDP dom  ║\n"
+        "  ╚══════════════════════════════════════════════════════════╝\n"
     )
 
     args = parse_args()
@@ -369,12 +409,16 @@ def main() -> None:
     run(
         veza_host=config["veza_host"],
         veza_api_key=config["veza_api_key"],
-        email_domain=args.email_domain,
+        idp_domain=config["idp_domain"],
         save_json=args.save_json,
         dry_run=args.dry_run,
+        provider_name=config["provider_name"],
+        data_source_name=config["data_source_name"],
+        provider_id=config["provider_id"],
+        entity_type=config["entity_type"],
     )
 
-    log.info("GICO email enrichment completed.")
+    log.info("Azure AD manager_OAA_idp enrichment completed.")
 
 
 if __name__ == "__main__":

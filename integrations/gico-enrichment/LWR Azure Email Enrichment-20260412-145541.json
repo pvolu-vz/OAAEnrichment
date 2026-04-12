@@ -1,0 +1,2396 @@
+{
+  "enriched_entity_property_definitions": [
+    {
+      "entity_type": "AzureADUser",
+      "enriched_properties": {
+        "manager_OAA_idp": "STRING"
+      }
+    }
+  ],
+  "enriched_entities": [
+    {
+      "type": "AzureADUser",
+      "id": "fffb7d05-b02f-4523-9f8c-d7b18667b4c5",
+      "data_source_id": "d967f42b-dfd3-4cf1-b636-3df31bcc1b66",
+      "properties": {
+        "manager_OAA_idp": "ahernandez31@smurfitwestrock.com"
+      }
+    },
+    {
+      "type": "AzureADUser",
+      "id": "74e74d33-202f-4d1e-9e56-563d942225b3",
+      "data_source_id": "9393a1d3-5429-4326-b48b-4d5e8fa2ddac",
+      "properties": {
+        "manager_OAA_idp": "Ada.Lovelace@smurfitwestrock.com"
+      }
+    },
+    {
+      "type": "AzureADUser",
+      "id": "98ed27b5-0a13-40fd-bad4-7eed466c3ee5",
+      "data_source_id": "9393a1d3-5429-4326-b48b-4d5e8fa2ddac",
+      "properties": {
+        "manager_OAA_idp": "Adele.Vance@smurfitwestrock.com"
+      }
+    },
+    {
+      "type": "AzureADUser",
+      "id": "da178575-635d-4a1e-b296-495c44a421bf",
+      "data_source_id": "9393a1d3-5429-4326-b48b-4d5e8fa2ddac",
+      "properties": {
+        "manager_OAA_idp": "AdeleV@smurfitwestrock.com"
+      }
+    },
+    {
+      "type": "AzureADUser",
+      "id": "287adaba-8dd3-414e-9999-d0be4a4ec13e",
+      "data_source_id": "d7c96fa9-aa1e-47d0-8852-d0434de4deb2",
+      "properties": {
+        "manager_OAA_idp": "AdeleV@smurfitwestrock.com"
+      }
+    },
+    {
+      "type": "AzureADUser",
+      "id": "a86d8a6c-df72-45c7-864f-55c4708c05a7",
+      "data_source_id": "9393a1d3-5429-4326-b48b-4d5e8fa2ddac",
+      "properties": {
+        "manager_OAA_idp": "adnan.elhabashy@smurfitwestrock.com"
+      }
+    },
+    {
+      "type": "AzureADUser",
+      "id": "ed9a7b13-b0e4-430e-b395-23199a141dca",
+      "data_source_id": "9393a1d3-5429-4326-b48b-4d5e8fa2ddac",
+      "properties": {
+        "manager_OAA_idp": "ahmed.ghorab@smurfitwestrock.com"
+      }
+    },
+    {
+      "type": "AzureADUser",
+      "id": "b94ee4f1-48ed-4e77-adf4-70c2c5a76ce0",
+      "data_source_id": "d967f42b-dfd3-4cf1-b636-3df31bcc1b66",
+      "properties": {
+        "manager_OAA_idp": "aisha.hassan@smurfitwestrock.com"
+      }
+    },
+    {
+      "type": "AzureADUser",
+      "id": "1532fa02-7761-4531-a789-e4d5fad7ca89",
+      "data_source_id": "9393a1d3-5429-4326-b48b-4d5e8fa2ddac",
+      "properties": {
+        "manager_OAA_idp": "alaa.mekkawy@smurfitwestrock.com"
+      }
+    },
+    {
+      "type": "AzureADUser",
+      "id": "936f157e-f22a-49f9-baee-7f2f4ae4c72f",
+      "data_source_id": "9393a1d3-5429-4326-b48b-4d5e8fa2ddac",
+      "properties": {
+        "manager_OAA_idp": "alaam@smurfitwestrock.com"
+      }
+    },
+    {
+      "type": "AzureADUser",
+      "id": "b912ccf0-a23d-484d-8f7a-df9c66a28e96",
+      "data_source_id": "9393a1d3-5429-4326-b48b-4d5e8fa2ddac",
+      "properties": {
+        "manager_OAA_idp": "Alan.Duffy@smurfitwestrock.com"
+      }
+    },
+    {
+      "type": "AzureADUser",
+      "id": "06d447a6-7ad6-4993-867b-f88413d2a584",
+      "data_source_id": "9393a1d3-5429-4326-b48b-4d5e8fa2ddac",
+      "properties": {
+        "manager_OAA_idp": "aturing@smurfitwestrock.com"
+      }
+    },
+    {
+      "type": "AzureADUser",
+      "id": "2ab12ad6-4294-42cc-b23e-eca1ca60184e",
+      "data_source_id": "9393a1d3-5429-4326-b48b-4d5e8fa2ddac",
+      "properties": {
+        "manager_OAA_idp": "alan.turing@smurfitwestrock.com"
+      }
+    },
+    {
+      "type": "AzureADUser",
+      "id": "817c5989-c068-4c21-9e52-8b59293d803d",
+      "data_source_id": "9393a1d3-5429-4326-b48b-4d5e8fa2ddac",
+      "properties": {
+        "manager_OAA_idp": "Alex.Johnson@smurfitwestrock.com"
+      }
+    },
+    {
+      "type": "AzureADUser",
+      "id": "edc000fe-d13b-4649-b9f6-6f055f8cf2fc",
+      "data_source_id": "9393a1d3-5429-4326-b48b-4d5e8fa2ddac",
+      "properties": {
+        "manager_OAA_idp": "AlexW@smurfitwestrock.com"
+      }
+    },
+    {
+      "type": "AzureADUser",
+      "id": "6facc26f-4755-4147-b88d-80ccde7b0458",
+      "data_source_id": "d7c96fa9-aa1e-47d0-8852-d0434de4deb2",
+      "properties": {
+        "manager_OAA_idp": "AlexW@smurfitwestrock.com"
+      }
+    },
+    {
+      "type": "AzureADUser",
+      "id": "c9b4a018-b58f-4a07-83b0-62cfc575783b",
+      "data_source_id": "d967f42b-dfd3-4cf1-b636-3df31bcc1b66",
+      "properties": {
+        "manager_OAA_idp": "agarcia33@smurfitwestrock.com"
+      }
+    },
+    {
+      "type": "AzureADUser",
+      "id": "d56f3214-c951-4961-88d6-9440f681bba8",
+      "data_source_id": "d967f42b-dfd3-4cf1-b636-3df31bcc1b66",
+      "properties": {
+        "manager_OAA_idp": "ahernandez22@smurfitwestrock.com"
+      }
+    },
+    {
+      "type": "AzureADUser",
+      "id": "9a95e2ce-d267-4f86-afaf-71990dfa9df3",
+      "data_source_id": "d967f42b-dfd3-4cf1-b636-3df31bcc1b66",
+      "properties": {
+        "manager_OAA_idp": "ajohnson14@smurfitwestrock.com"
+      }
+    },
+    {
+      "type": "AzureADUser",
+      "id": "e5ecc89e-e797-4eec-8180-c1423836b133",
+      "data_source_id": "d967f42b-dfd3-4cf1-b636-3df31bcc1b66",
+      "properties": {
+        "manager_OAA_idp": "alexandra.chen1@smurfitwestrock.com"
+      }
+    },
+    {
+      "type": "AzureADUser",
+      "id": "27de4eb6-05c8-4deb-b55b-1b68c4155445",
+      "data_source_id": "9393a1d3-5429-4326-b48b-4d5e8fa2ddac",
+      "properties": {
+        "manager_OAA_idp": "altan@smurfitwestrock.com"
+      }
+    },
+    {
+      "type": "AzureADUser",
+      "id": "6e434c53-cdf0-4d38-976b-14e9620ca80f",
+      "data_source_id": "9393a1d3-5429-4326-b48b-4d5e8fa2ddac",
+      "properties": {
+        "manager_OAA_idp": "alice.tan@smurfitwestrock.com"
+      }
+    },
+    {
+      "type": "AzureADUser",
+      "id": "7ad4394e-8e8d-4b50-9479-c65cce92264a",
+      "data_source_id": "9393a1d3-5429-4326-b48b-4d5e8fa2ddac",
+      "properties": {
+        "manager_OAA_idp": "Allie.Smith@smurfitwestrock.com"
+      }
+    },
+    {
+      "type": "AzureADUser",
+      "id": "30f46235-6689-411f-ba2c-12e4e43d9d3e",
+      "data_source_id": "9393a1d3-5429-4326-b48b-4d5e8fa2ddac",
+      "properties": {
+        "manager_OAA_idp": "Amanda.Dugger@smurfitwestrock.com"
+      }
+    },
+    {
+      "type": "AzureADUser",
+      "id": "8aa1250a-e6b2-47d1-8001-eedb54e937d8",
+      "data_source_id": "9393a1d3-5429-4326-b48b-4d5e8fa2ddac",
+      "properties": {
+        "manager_OAA_idp": "amaral_yahoo.com#EXT#@smurfitwestrock.com"
+      }
+    },
+    {
+      "type": "AzureADUser",
+      "id": "b72755b3-19b3-4bdf-83a9-3d2db44a42e4",
+      "data_source_id": "d967f42b-dfd3-4cf1-b636-3df31bcc1b66",
+      "properties": {
+        "manager_OAA_idp": "amiller34@smurfitwestrock.com"
+      }
+    },
+    {
+      "type": "AzureADUser",
+      "id": "ee24e27a-d05c-4c6a-a811-e7c6c302d512",
+      "data_source_id": "9393a1d3-5429-4326-b48b-4d5e8fa2ddac",
+      "properties": {
+        "manager_OAA_idp": "Amy.Cox@smurfitwestrock.com"
+      }
+    },
+    {
+      "type": "AzureADUser",
+      "id": "558b6790-ac7a-4dc8-9852-a54a6c8288ec",
+      "data_source_id": "d967f42b-dfd3-4cf1-b636-3df31bcc1b66",
+      "properties": {
+        "manager_OAA_idp": "acapdevielle@smurfitwestrock.com"
+      }
+    },
+    {
+      "type": "AzureADUser",
+      "id": "27993eb7-f946-4dc8-9824-0819ecea1fcb",
+      "data_source_id": "d7c96fa9-aa1e-47d0-8852-d0434de4deb2",
+      "properties": {
+        "manager_OAA_idp": "anotarbartolo@smurfitwestrock.com"
+      }
+    },
+    {
+      "type": "AzureADUser",
+      "id": "b33af208-7282-4fb5-9597-1aa52fd7f27a",
+      "data_source_id": "9393a1d3-5429-4326-b48b-4d5e8fa2ddac",
+      "properties": {
+        "manager_OAA_idp": "Asmaa.Fahmi@smurfitwestrock.com"
+      }
+    },
+    {
+      "type": "AzureADUser",
+      "id": "0a303c69-5113-426c-87e4-b74605eaa36f",
+      "data_source_id": "9393a1d3-5429-4326-b48b-4d5e8fa2ddac",
+      "properties": {
+        "manager_OAA_idp": "asmaa.yousry_flairstech.com#EXT#@smurfitwestrock.com"
+      }
+    },
+    {
+      "type": "AzureADUser",
+      "id": "71ab9a4a-bdd2-4fd0-ab92-4f07a79fd28f",
+      "data_source_id": "d967f42b-dfd3-4cf1-b636-3df31bcc1b66",
+      "properties": {
+        "manager_OAA_idp": "AvaGonzalez@smurfitwestrock.com"
+      }
+    },
+    {
+      "type": "AzureADUser",
+      "id": "4ffb8819-001d-4119-936f-f6e79453ae6e",
+      "data_source_id": "d967f42b-dfd3-4cf1-b636-3df31bcc1b66",
+      "properties": {
+        "manager_OAA_idp": "amoore19@smurfitwestrock.com"
+      }
+    },
+    {
+      "type": "AzureADUser",
+      "id": "60b5e6b4-f44a-4a3e-b9c3-c0e4105ac93e",
+      "data_source_id": "d967f42b-dfd3-4cf1-b636-3df31bcc1b66",
+      "properties": {
+        "manager_OAA_idp": "athomas4@smurfitwestrock.com"
+      }
+    },
+    {
+      "type": "AzureADUser",
+      "id": "84130c09-7521-4e58-aab9-4079f4e8a049",
+      "data_source_id": "9393a1d3-5429-4326-b48b-4d5e8fa2ddac",
+      "properties": {
+        "manager_OAA_idp": "aya.lahoney@smurfitwestrock.com"
+      }
+    },
+    {
+      "type": "AzureADUser",
+      "id": "a35de66c-1c69-45bb-a47d-089b23fe94d3",
+      "data_source_id": "d967f42b-dfd3-4cf1-b636-3df31bcc1b66",
+      "properties": {
+        "manager_OAA_idp": "bmiller15@smurfitwestrock.com"
+      }
+    },
+    {
+      "type": "AzureADUser",
+      "id": "d2871bab-ce97-4d95-8dce-18ab0962c745",
+      "data_source_id": "d4f2730b-7151-4c31-8388-ca7e16ff224a",
+      "properties": {
+        "manager_OAA_idp": "BevDev@smurfitwestrock.com"
+      }
+    },
+    {
+      "type": "AzureADUser",
+      "id": "239afdfd-c4f9-4285-b5cf-b04f42371506",
+      "data_source_id": "d967f42b-dfd3-4cf1-b636-3df31bcc1b66",
+      "properties": {
+        "manager_OAA_idp": "bb@smurfitwestrock.com"
+      }
+    },
+    {
+      "type": "AzureADUser",
+      "id": "15e7409b-ddcd-4613-aa97-8aec50bbb62c",
+      "data_source_id": "748b21ea-959b-46ac-a2b4-6ed2f7858540",
+      "properties": {
+        "manager_OAA_idp": "bob.finance@smurfitwestrock.com"
+      }
+    },
+    {
+      "type": "AzureADUser",
+      "id": "b60c8033-6e2f-4a6b-a2f8-8e4b1eb1f3f2",
+      "data_source_id": "8ba6737d-7d21-4a9b-961b-7c56ae431e71",
+      "properties": {
+        "manager_OAA_idp": "brandon.williams@smurfitwestrock.com"
+      }
+    },
+    {
+      "type": "AzureADUser",
+      "id": "dcfa9049-4905-45b6-8989-c1775c58b709",
+      "data_source_id": "d967f42b-dfd3-4cf1-b636-3df31bcc1b66",
+      "properties": {
+        "manager_OAA_idp": "brett.Hunoldt@smurfitwestrock.com"
+      }
+    },
+    {
+      "type": "AzureADUser",
+      "id": "9926b0c7-1666-4f62-8ec2-af2cbe32ea00",
+      "data_source_id": "9393a1d3-5429-4326-b48b-4d5e8fa2ddac",
+      "properties": {
+        "manager_OAA_idp": "carlos.gomez@smurfitwestrock.com"
+      }
+    },
+    {
+      "type": "AzureADUser",
+      "id": "a502a1e8-847e-4979-a53f-c823afce1102",
+      "data_source_id": "748b21ea-959b-46ac-a2b4-6ed2f7858540",
+      "properties": {
+        "manager_OAA_idp": "carol.hr@smurfitwestrock.com"
+      }
+    },
+    {
+      "type": "AzureADUser",
+      "id": "91827f92-280f-48ca-9fe7-89e350cb612f",
+      "data_source_id": "d967f42b-dfd3-4cf1-b636-3df31bcc1b66",
+      "properties": {
+        "manager_OAA_idp": "cjackson1@smurfitwestrock.com"
+      }
+    },
+    {
+      "type": "AzureADUser",
+      "id": "fc4995cb-30bc-47d9-8fd9-94b4d21c7dc6",
+      "data_source_id": "d967f42b-dfd3-4cf1-b636-3df31bcc1b66",
+      "properties": {
+        "manager_OAA_idp": "clopez11@smurfitwestrock.com"
+      }
+    },
+    {
+      "type": "AzureADUser",
+      "id": "21f0e30f-b3a3-48bf-822f-4c0e46cb04bf",
+      "data_source_id": "d967f42b-dfd3-4cf1-b636-3df31bcc1b66",
+      "properties": {
+        "manager_OAA_idp": "cmartinez16@smurfitwestrock.com"
+      }
+    },
+    {
+      "type": "AzureADUser",
+      "id": "17855b44-7a72-461c-8607-58f9640ee63e",
+      "data_source_id": "d967f42b-dfd3-4cf1-b636-3df31bcc1b66",
+      "properties": {
+        "manager_OAA_idp": "clean.environment@smurfitwestrock.com"
+      }
+    },
+    {
+      "type": "AzureADUser",
+      "id": "9ce06f4f-57f8-488e-889d-2776d9615596",
+      "data_source_id": "8ba6737d-7d21-4a9b-961b-7c56ae431e71",
+      "properties": {
+        "manager_OAA_idp": "danielmccormick@smurfitwestrock.com"
+      }
+    },
+    {
+      "type": "AzureADUser",
+      "id": "90a40734-6077-45c5-a0c7-10797373b667",
+      "data_source_id": "748b21ea-959b-46ac-a2b4-6ed2f7858540",
+      "properties": {
+        "manager_OAA_idp": "dave.eng@smurfitwestrock.com"
+      }
+    },
+    {
+      "type": "AzureADUser",
+      "id": "78690bd5-003e-4393-b67a-ddac8a0c2a82",
+      "data_source_id": "d967f42b-dfd3-4cf1-b636-3df31bcc1b66",
+      "properties": {
+        "manager_OAA_idp": "david.fowl@smurfitwestrock.com"
+      }
+    },
+    {
+      "type": "AzureADUser",
+      "id": "2aed54fa-aef9-4e87-a9b9-d1e235c633ab",
+      "data_source_id": "d967f42b-dfd3-4cf1-b636-3df31bcc1b66",
+      "properties": {
+        "manager_OAA_idp": "david.telecom@smurfitwestrock.com"
+      }
+    },
+    {
+      "type": "AzureADUser",
+      "id": "3489f7de-ba31-419d-8463-3dca7f4aa5a4",
+      "data_source_id": "d967f42b-dfd3-4cf1-b636-3df31bcc1b66",
+      "properties": {
+        "manager_OAA_idp": "david.agri@smurfitwestrock.com"
+      }
+    },
+    {
+      "type": "AzureADUser",
+      "id": "55ffb03f-e0d4-443f-b4b5-2d39f1e60c2d",
+      "data_source_id": "d967f42b-dfd3-4cf1-b636-3df31bcc1b66",
+      "properties": {
+        "manager_OAA_idp": "david.sports@smurfitwestrock.com"
+      }
+    },
+    {
+      "type": "AzureADUser",
+      "id": "688a1b24-afff-4195-b585-4f9dc07ac700",
+      "data_source_id": "d967f42b-dfd3-4cf1-b636-3df31bcc1b66",
+      "properties": {
+        "manager_OAA_idp": "david.environment@smurfitwestrock.com"
+      }
+    },
+    {
+      "type": "AzureADUser",
+      "id": "6f111e11-f819-4345-8e40-adeb33fa4f2d",
+      "data_source_id": "d967f42b-dfd3-4cf1-b636-3df31bcc1b66",
+      "properties": {
+        "manager_OAA_idp": "david.media@smurfitwestrock.com"
+      }
+    },
+    {
+      "type": "AzureADUser",
+      "id": "953abab3-c9e2-441a-b076-299eb3cac85e",
+      "data_source_id": "d967f42b-dfd3-4cf1-b636-3df31bcc1b66",
+      "properties": {
+        "manager_OAA_idp": "david.tech@smurfitwestrock.com"
+      }
+    },
+    {
+      "type": "AzureADUser",
+      "id": "a5a33d5d-74e1-4906-aeb6-f45445b0dcdd",
+      "data_source_id": "d967f42b-dfd3-4cf1-b636-3df31bcc1b66",
+      "properties": {
+        "manager_OAA_idp": "david.kim.auto@smurfitwestrock.com"
+      }
+    },
+    {
+      "type": "AzureADUser",
+      "id": "ae6eaf7d-14ac-4e51-b2e4-c1161b87bc6c",
+      "data_source_id": "d967f42b-dfd3-4cf1-b636-3df31bcc1b66",
+      "properties": {
+        "manager_OAA_idp": "david.pharm@smurfitwestrock.com"
+      }
+    },
+    {
+      "type": "AzureADUser",
+      "id": "e3829748-7a42-4a0e-ae90-ff26c4f5b852",
+      "data_source_id": "d967f42b-dfd3-4cf1-b636-3df31bcc1b66",
+      "properties": {
+        "manager_OAA_idp": "david.okafor@smurfitwestrock.com"
+      }
+    },
+    {
+      "type": "AzureADUser",
+      "id": "9d45310c-c192-438d-a787-88ded4db55ce",
+      "data_source_id": "9393a1d3-5429-4326-b48b-4d5e8fa2ddac",
+      "properties": {
+        "manager_OAA_idp": "department.manager@smurfitwestrock.com"
+      }
+    },
+    {
+      "type": "AzureADUser",
+      "id": "b4e743c6-b4be-4e2b-9bd9-b1ff61dc6596",
+      "data_source_id": "9393a1d3-5429-4326-b48b-4d5e8fa2ddac",
+      "properties": {
+        "manager_OAA_idp": "DiegoS@smurfitwestrock.com"
+      }
+    },
+    {
+      "type": "AzureADUser",
+      "id": "eeef1977-62dd-4db6-85c2-cf3a00ce7e63",
+      "data_source_id": "d7c96fa9-aa1e-47d0-8852-d0434de4deb2",
+      "properties": {
+        "manager_OAA_idp": "DiegoS@smurfitwestrock.com"
+      }
+    },
+    {
+      "type": "AzureADUser",
+      "id": "8eb3d107-6faa-4ec9-bba8-c2359c3e0774",
+      "data_source_id": "9393a1d3-5429-4326-b48b-4d5e8fa2ddac",
+      "properties": {
+        "manager_OAA_idp": "disableaccount@smurfitwestrock.com"
+      }
+    },
+    {
+      "type": "AzureADUser",
+      "id": "2086d4f3-8b5e-49de-a7fa-2fad6d67a0c4",
+      "data_source_id": "d967f42b-dfd3-4cf1-b636-3df31bcc1b66",
+      "properties": {
+        "manager_OAA_idp": "emoore29@smurfitwestrock.com"
+      }
+    },
+    {
+      "type": "AzureADUser",
+      "id": "84ffc061-eea1-4e9d-be54-334e4f24fc0f",
+      "data_source_id": "d967f42b-dfd3-4cf1-b636-3df31bcc1b66",
+      "properties": {
+        "manager_OAA_idp": "emoore49@smurfitwestrock.com"
+      }
+    },
+    {
+      "type": "AzureADUser",
+      "id": "be968dde-4493-43f2-8acf-219189974e03",
+      "data_source_id": "d967f42b-dfd3-4cf1-b636-3df31bcc1b66",
+      "properties": {
+        "manager_OAA_idp": "ehernandez9@smurfitwestrock.com"
+      }
+    },
+    {
+      "type": "AzureADUser",
+      "id": "40e4179a-0f25-4278-8507-3b90fe88d07a",
+      "data_source_id": "d967f42b-dfd3-4cf1-b636-3df31bcc1b66",
+      "properties": {
+        "manager_OAA_idp": "erodriguez5@smurfitwestrock.com"
+      }
+    },
+    {
+      "type": "AzureADUser",
+      "id": "2e718764-976a-4f38-80c7-08230edc3d37",
+      "data_source_id": "d967f42b-dfd3-4cf1-b636-3df31bcc1b66",
+      "properties": {
+        "manager_OAA_idp": "ewilson38@smurfitwestrock.com"
+      }
+    },
+    {
+      "type": "AzureADUser",
+      "id": "3faf4b52-d59f-4c8e-92c9-71e4978587ee",
+      "data_source_id": "9393a1d3-5429-4326-b48b-4d5e8fa2ddac",
+      "properties": {
+        "manager_OAA_idp": "emily.davis@smurfitwestrock.com"
+      }
+    },
+    {
+      "type": "AzureADUser",
+      "id": "3c97c824-7d7f-49d8-a911-fad7694f46dd",
+      "data_source_id": "d967f42b-dfd3-4cf1-b636-3df31bcc1b66",
+      "properties": {
+        "manager_OAA_idp": "emily.environment@smurfitwestrock.com"
+      }
+    },
+    {
+      "type": "AzureADUser",
+      "id": "43ae9622-a42e-46b9-b0e5-476baaa4f4ae",
+      "data_source_id": "d967f42b-dfd3-4cf1-b636-3df31bcc1b66",
+      "properties": {
+        "manager_OAA_idp": "emily.telecom@smurfitwestrock.com"
+      }
+    },
+    {
+      "type": "AzureADUser",
+      "id": "5597a343-32f2-474b-8058-8d79c1b9f4ac",
+      "data_source_id": "d967f42b-dfd3-4cf1-b636-3df31bcc1b66",
+      "properties": {
+        "manager_OAA_idp": "emily.tech@smurfitwestrock.com"
+      }
+    },
+    {
+      "type": "AzureADUser",
+      "id": "5d6a10b4-c174-461d-8624-31f938b0fba0",
+      "data_source_id": "d967f42b-dfd3-4cf1-b636-3df31bcc1b66",
+      "properties": {
+        "manager_OAA_idp": "emily.rodriguez.auto@smurfitwestrock.com"
+      }
+    },
+    {
+      "type": "AzureADUser",
+      "id": "7793827c-b98f-41cc-a054-bfbadef22b14",
+      "data_source_id": "d967f42b-dfd3-4cf1-b636-3df31bcc1b66",
+      "properties": {
+        "manager_OAA_idp": "emily.media@smurfitwestrock.com"
+      }
+    },
+    {
+      "type": "AzureADUser",
+      "id": "9c4a830f-668e-4c8a-8ce3-137f6b94ffa2",
+      "data_source_id": "d967f42b-dfd3-4cf1-b636-3df31bcc1b66",
+      "properties": {
+        "manager_OAA_idp": "emily.agri@smurfitwestrock.com"
+      }
+    },
+    {
+      "type": "AzureADUser",
+      "id": "a0cedc86-d645-4730-ad3d-2ac7c9e09ffe",
+      "data_source_id": "d967f42b-dfd3-4cf1-b636-3df31bcc1b66",
+      "properties": {
+        "manager_OAA_idp": "emily.sports@smurfitwestrock.com"
+      }
+    },
+    {
+      "type": "AzureADUser",
+      "id": "d4c79ffc-d1a6-4b53-9b12-2cb8533e812b",
+      "data_source_id": "d967f42b-dfd3-4cf1-b636-3df31bcc1b66",
+      "properties": {
+        "manager_OAA_idp": "emily.pharm@smurfitwestrock.com"
+      }
+    },
+    {
+      "type": "AzureADUser",
+      "id": "4841e0ba-7168-4273-83e2-57106f4f1921",
+      "data_source_id": "d967f42b-dfd3-4cf1-b636-3df31bcc1b66",
+      "properties": {
+        "manager_OAA_idp": "emily.zhang@smurfitwestrock.com"
+      }
+    },
+    {
+      "type": "AzureADUser",
+      "id": "473bd79e-8e71-4fd6-bdab-198d869331a7",
+      "data_source_id": "d967f42b-dfd3-4cf1-b636-3df31bcc1b66",
+      "properties": {
+        "manager_OAA_idp": "edavis6@smurfitwestrock.com"
+      }
+    },
+    {
+      "type": "AzureADUser",
+      "id": "eb3b4195-c5de-4d6e-bb8a-6eebdc14ee1d",
+      "data_source_id": "d967f42b-dfd3-4cf1-b636-3df31bcc1b66",
+      "properties": {
+        "manager_OAA_idp": "edavis43@smurfitwestrock.com"
+      }
+    },
+    {
+      "type": "AzureADUser",
+      "id": "a5642114-a194-4854-bbfd-85b18660e4cb",
+      "data_source_id": "d967f42b-dfd3-4cf1-b636-3df31bcc1b66",
+      "properties": {
+        "manager_OAA_idp": "elopez47@smurfitwestrock.com"
+      }
+    },
+    {
+      "type": "AzureADUser",
+      "id": "616b4c66-2901-4059-b833-db9be2fbbefa",
+      "data_source_id": "d967f42b-dfd3-4cf1-b636-3df31bcc1b66",
+      "properties": {
+        "manager_OAA_idp": "emartin12@smurfitwestrock.com"
+      }
+    },
+    {
+      "type": "AzureADUser",
+      "id": "f0766b02-caf5-4c73-b18a-06aea62c075b",
+      "data_source_id": "d967f42b-dfd3-4cf1-b636-3df31bcc1b66",
+      "properties": {
+        "manager_OAA_idp": "emiller30@smurfitwestrock.com"
+      }
+    },
+    {
+      "type": "AzureADUser",
+      "id": "f2b3800d-4505-4aca-9a99-d49ffcf5c083",
+      "data_source_id": "d967f42b-dfd3-4cf1-b636-3df31bcc1b66",
+      "properties": {
+        "manager_OAA_idp": "eanderson36@smurfitwestrock.com"
+      }
+    },
+    {
+      "type": "AzureADUser",
+      "id": "f30afd9b-1d64-464b-9fa9-13bef6972620",
+      "data_source_id": "d967f42b-dfd3-4cf1-b636-3df31bcc1b66",
+      "properties": {
+        "manager_OAA_idp": "ewilson13@smurfitwestrock.com"
+      }
+    },
+    {
+      "type": "AzureADUser",
+      "id": "4a0c4208-c119-421e-93c0-070b53749db4",
+      "data_source_id": "748b21ea-959b-46ac-a2b4-6ed2f7858540",
+      "properties": {
+        "manager_OAA_idp": "eve.sales@smurfitwestrock.com"
+      }
+    },
+    {
+      "type": "AzureADUser",
+      "id": "c75fd960-9ca6-4068-b892-d3fca5e9e465",
+      "data_source_id": "9393a1d3-5429-4326-b48b-4d5e8fa2ddac",
+      "properties": {
+        "manager_OAA_idp": "eZA5woi@smurfitwestrock.com"
+      }
+    },
+    {
+      "type": "AzureADUser",
+      "id": "34bc7f1c-d86b-4d5c-9377-69dcf2a9bf07",
+      "data_source_id": "d967f42b-dfd3-4cf1-b636-3df31bcc1b66",
+      "properties": {
+        "manager_OAA_idp": "farm.agri@smurfitwestrock.com"
+      }
+    },
+    {
+      "type": "AzureADUser",
+      "id": "7804cd6a-e5b7-437f-aa7c-dc5a8c0a4866",
+      "data_source_id": "9393a1d3-5429-4326-b48b-4d5e8fa2ddac",
+      "properties": {
+        "manager_OAA_idp": "Fernanda.Volu@smurfitwestrock.com"
+      }
+    },
+    {
+      "type": "AzureADUser",
+      "id": "faa0fbc9-06d4-4a15-883b-d2bd856ecbf8",
+      "data_source_id": "d967f42b-dfd3-4cf1-b636-3df31bcc1b66",
+      "properties": {
+        "manager_OAA_idp": "fherbert@smurfitwestrock.com"
+      }
+    },
+    {
+      "type": "AzureADUser",
+      "id": "3e2733d1-553b-4581-baf9-53ecd670d7a9",
+      "data_source_id": "d967f42b-dfd3-4cf1-b636-3df31bcc1b66",
+      "properties": {
+        "manager_OAA_idp": "gabriel.williams@smurfitwestrock.com"
+      }
+    },
+    {
+      "type": "AzureADUser",
+      "id": "23ec82e4-9c6a-44f8-b71f-6b60bad78925",
+      "data_source_id": "9393a1d3-5429-4326-b48b-4d5e8fa2ddac",
+      "properties": {
+        "manager_OAA_idp": "george.awad@smurfitwestrock.com"
+      }
+    },
+    {
+      "type": "AzureADUser",
+      "id": "623566c9-2879-418a-aea6-a8673027e9dc",
+      "data_source_id": "8ba6737d-7d21-4a9b-961b-7c56ae431e71",
+      "properties": {
+        "manager_OAA_idp": "George.Schultz@smurfitwestrock.com"
+      }
+    },
+    {
+      "type": "AzureADUser",
+      "id": "49062a58-c5cb-489f-b1e5-19fae6f2847a",
+      "data_source_id": "d967f42b-dfd3-4cf1-b636-3df31bcc1b66",
+      "properties": {
+        "manager_OAA_idp": "gbliss@smurfitwestrock.com"
+      }
+    },
+    {
+      "type": "AzureADUser",
+      "id": "5a34ed33-e434-427c-9254-4e2c1534a019",
+      "data_source_id": "9393a1d3-5429-4326-b48b-4d5e8fa2ddac",
+      "properties": {
+        "manager_OAA_idp": "Gilmar.Esteves@smurfitwestrock.com"
+      }
+    },
+    {
+      "type": "AzureADUser",
+      "id": "4869eb11-aeef-43f3-8223-d33ccee2e155",
+      "data_source_id": "9393a1d3-5429-4326-b48b-4d5e8fa2ddac",
+      "properties": {
+        "manager_OAA_idp": "GradyA@smurfitwestrock.com"
+      }
+    },
+    {
+      "type": "AzureADUser",
+      "id": "ddb5656b-7383-4935-9b72-9a90c4648de4",
+      "data_source_id": "d7c96fa9-aa1e-47d0-8852-d0434de4deb2",
+      "properties": {
+        "manager_OAA_idp": "GradyA@smurfitwestrock.com"
+      }
+    },
+    {
+      "type": "AzureADUser",
+      "id": "cb75dcfd-be5d-40b6-a359-b7141ca90bfa",
+      "data_source_id": "d967f42b-dfd3-4cf1-b636-3df31bcc1b66",
+      "properties": {
+        "manager_OAA_idp": "hdavis20@smurfitwestrock.com"
+      }
+    },
+    {
+      "type": "AzureADUser",
+      "id": "c500349f-7bc0-4804-a4cc-b54bd68a2831",
+      "data_source_id": "d967f42b-dfd3-4cf1-b636-3df31bcc1b66",
+      "properties": {
+        "manager_OAA_idp": "hrodriguez50@smurfitwestrock.com"
+      }
+    },
+    {
+      "type": "AzureADUser",
+      "id": "e9d69100-5db8-4091-98fd-0c93317c7b96",
+      "data_source_id": "9393a1d3-5429-4326-b48b-4d5e8fa2ddac",
+      "properties": {
+        "manager_OAA_idp": "HenriettaM@smurfitwestrock.com"
+      }
+    },
+    {
+      "type": "AzureADUser",
+      "id": "7094a527-4883-46c8-9382-418e83fe9ec9",
+      "data_source_id": "d7c96fa9-aa1e-47d0-8852-d0434de4deb2",
+      "properties": {
+        "manager_OAA_idp": "HenriettaM@smurfitwestrock.com"
+      }
+    },
+    {
+      "type": "AzureADUser",
+      "id": "0d604e8d-d9b3-4e14-ac95-37f3a4c3299b",
+      "data_source_id": "d967f42b-dfd3-4cf1-b636-3df31bcc1b66",
+      "properties": {
+        "manager_OAA_idp": "hgonzalez40@smurfitwestrock.com"
+      }
+    },
+    {
+      "type": "AzureADUser",
+      "id": "09c89f80-adf8-42ad-9e0c-5a0b913f7c91",
+      "data_source_id": "d967f42b-dfd3-4cf1-b636-3df31bcc1b66",
+      "properties": {
+        "manager_OAA_idp": "hmoore10@smurfitwestrock.com"
+      }
+    },
+    {
+      "type": "AzureADUser",
+      "id": "b5717ec3-56c1-4524-9935-1701ef85ea5e",
+      "data_source_id": "d967f42b-dfd3-4cf1-b636-3df31bcc1b66",
+      "properties": {
+        "manager_OAA_idp": "hrodriguez26@smurfitwestrock.com"
+      }
+    },
+    {
+      "type": "AzureADUser",
+      "id": "dddb8374-e4b0-44d7-a5c7-090475c594b4",
+      "data_source_id": "d967f42b-dfd3-4cf1-b636-3df31bcc1b66",
+      "properties": {
+        "manager_OAA_idp": "hrodriguez24@smurfitwestrock.com"
+      }
+    },
+    {
+      "type": "AzureADUser",
+      "id": "83e3ee1b-33d7-40fa-bcd6-4808fbe60fe0",
+      "data_source_id": "9393a1d3-5429-4326-b48b-4d5e8fa2ddac",
+      "properties": {
+        "manager_OAA_idp": "hossam.habib_flairstech.com#EXT#@smurfitwestrock.com"
+      }
+    },
+    {
+      "type": "AzureADUser",
+      "id": "5a99fffa-14fa-40f0-831e-abb00073d5d9",
+      "data_source_id": "748b21ea-959b-46ac-a2b4-6ed2f7858540",
+      "properties": {
+        "manager_OAA_idp": "ian.it@smurfitwestrock.com"
+      }
+    },
+    {
+      "type": "AzureADUser",
+      "id": "35590311-8bbc-4a2b-b56e-dac348ba27df",
+      "data_source_id": "9393a1d3-5429-4326-b48b-4d5e8fa2ddac",
+      "properties": {
+        "manager_OAA_idp": "identityNow.va@smurfitwestrock.com"
+      }
+    },
+    {
+      "type": "AzureADUser",
+      "id": "b5b98dd0-e7af-4367-8200-3d17a42be1d2",
+      "data_source_id": "d967f42b-dfd3-4cf1-b636-3df31bcc1b66",
+      "properties": {
+        "manager_OAA_idp": "isabella.martinez@smurfitwestrock.com"
+      }
+    },
+    {
+      "type": "AzureADUser",
+      "id": "4f406345-50cf-46f1-8517-b9ad5b2d3e05",
+      "data_source_id": "d7c96fa9-aa1e-47d0-8852-d0434de4deb2",
+      "properties": {
+        "manager_OAA_idp": "IsaiahL@smurfitwestrock.com"
+      }
+    },
+    {
+      "type": "AzureADUser",
+      "id": "7cea40ca-6b5e-40eb-af09-b411622ebd26",
+      "data_source_id": "d967f42b-dfd3-4cf1-b636-3df31bcc1b66",
+      "properties": {
+        "manager_OAA_idp": "ishan.media@smurfitwestrock.com"
+      }
+    },
+    {
+      "type": "AzureADUser",
+      "id": "de3974b3-ade1-43e7-b374-acb1a30916ef",
+      "data_source_id": "9393a1d3-5429-4326-b48b-4d5e8fa2ddac",
+      "properties": {
+        "manager_OAA_idp": "israa.gomaa@smurfitwestrock.com"
+      }
+    },
+    {
+      "type": "AzureADUser",
+      "id": "90e45c98-494e-4b38-9349-43f9c89bcaa7",
+      "data_source_id": "9393a1d3-5429-4326-b48b-4d5e8fa2ddac",
+      "properties": {
+        "manager_OAA_idp": "ITAdmin@smurfitwestrock.com"
+      }
+    },
+    {
+      "type": "AzureADUser",
+      "id": "e529b677-efe2-45f8-a2a7-a3cc75fa4858",
+      "data_source_id": "d967f42b-dfd3-4cf1-b636-3df31bcc1b66",
+      "properties": {
+        "manager_OAA_idp": "jblack@smurfitwestrock.com"
+      }
+    },
+    {
+      "type": "AzureADUser",
+      "id": "1b3fbd4a-f3ff-472b-a94e-74062c6b499e",
+      "data_source_id": "d967f42b-dfd3-4cf1-b636-3df31bcc1b66",
+      "properties": {
+        "manager_OAA_idp": "jack.tech@smurfitwestrock.com"
+      }
+    },
+    {
+      "type": "AzureADUser",
+      "id": "ae95b344-c7f7-4f00-a6b1-48c3e79e64b4",
+      "data_source_id": "9393a1d3-5429-4326-b48b-4d5e8fa2ddac",
+      "properties": {
+        "manager_OAA_idp": "jagadish@smurfitwestrock.com"
+      }
+    },
+    {
+      "type": "AzureADUser",
+      "id": "dc3012bb-6615-4c3e-92bc-2286fd4fe698",
+      "data_source_id": "d967f42b-dfd3-4cf1-b636-3df31bcc1b66",
+      "properties": {
+        "manager_OAA_idp": "jbond@smurfitwestrock.com"
+      }
+    },
+    {
+      "type": "AzureADUser",
+      "id": "58cf0faa-4ee1-438c-aec9-7f976b4c61eb",
+      "data_source_id": "d967f42b-dfd3-4cf1-b636-3df31bcc1b66",
+      "properties": {
+        "manager_OAA_idp": "jgonzalez17@smurfitwestrock.com"
+      }
+    },
+    {
+      "type": "AzureADUser",
+      "id": "d1957b24-0080-41bc-b1f2-ea80ce11cbd5",
+      "data_source_id": "d967f42b-dfd3-4cf1-b636-3df31bcc1b66",
+      "properties": {
+        "manager_OAA_idp": "jhill@smurfitwestrock.com"
+      }
+    },
+    {
+      "type": "AzureADUser",
+      "id": "c67fe350-2a47-4c50-a620-071bd9ee1900",
+      "data_source_id": "d967f42b-dfd3-4cf1-b636-3df31bcc1b66",
+      "properties": {
+        "manager_OAA_idp": "james.rodriguez@smurfitwestrock.com"
+      }
+    },
+    {
+      "type": "AzureADUser",
+      "id": "45b3aa34-4de1-4f6b-9754-1f8d0975a53e",
+      "data_source_id": "d967f42b-dfd3-4cf1-b636-3df31bcc1b66",
+      "properties": {
+        "manager_OAA_idp": "jsmith7@smurfitwestrock.com"
+      }
+    },
+    {
+      "type": "AzureADUser",
+      "id": "be4e352a-ca27-4a28-b98a-d9535cf54849",
+      "data_source_id": "d967f42b-dfd3-4cf1-b636-3df31bcc1b66",
+      "properties": {
+        "manager_OAA_idp": "jsmith48@smurfitwestrock.com"
+      }
+    },
+    {
+      "type": "AzureADUser",
+      "id": "80b52260-67cf-42cf-9ab5-06e78be11ee6",
+      "data_source_id": "d967f42b-dfd3-4cf1-b636-3df31bcc1b66",
+      "properties": {
+        "manager_OAA_idp": "james.winters.auto@smurfitwestrock.com"
+      }
+    },
+    {
+      "type": "AzureADUser",
+      "id": "8444562e-f4d8-488b-a4fc-d678a2059dac",
+      "data_source_id": "9393a1d3-5429-4326-b48b-4d5e8fa2ddac",
+      "properties": {
+        "manager_OAA_idp": "jsmith@smurfitwestrock.com"
+      }
+    },
+    {
+      "type": "AzureADUser",
+      "id": "d13e2ea9-d7c7-44d5-940c-948669a0b71b",
+      "data_source_id": "9393a1d3-5429-4326-b48b-4d5e8fa2ddac",
+      "properties": {
+        "manager_OAA_idp": "jane.smith@smurfitwestrock.com"
+      }
+    },
+    {
+      "type": "AzureADUser",
+      "id": "37ad9c5f-cb18-4ddf-bbc3-307e0ce2f0aa",
+      "data_source_id": "d967f42b-dfd3-4cf1-b636-3df31bcc1b66",
+      "properties": {
+        "manager_OAA_idp": "jenni@smurfitwestrock.com"
+      }
+    },
+    {
+      "type": "AzureADUser",
+      "id": "10e7263e-0fff-4f66-bb83-dd081e34582f",
+      "data_source_id": "d967f42b-dfd3-4cf1-b636-3df31bcc1b66",
+      "properties": {
+        "manager_OAA_idp": "jim.sports@smurfitwestrock.com"
+      }
+    },
+    {
+      "type": "AzureADUser",
+      "id": "7de8d2a0-831d-421a-adb0-2861b56c3138",
+      "data_source_id": "d7c96fa9-aa1e-47d0-8852-d0434de4deb2",
+      "properties": {
+        "manager_OAA_idp": "JohannaL@smurfitwestrock.com"
+      }
+    },
+    {
+      "type": "AzureADUser",
+      "id": "6d26b7e6-8820-4598-a376-e9eefac2f04b",
+      "data_source_id": "d967f42b-dfd3-4cf1-b636-3df31bcc1b66",
+      "properties": {
+        "manager_OAA_idp": "jsmith@smurfitwestrock.com"
+      }
+    },
+    {
+      "type": "AzureADUser",
+      "id": "afcee5b7-9c3a-489e-9bfc-b6cfdd417151",
+      "data_source_id": "d967f42b-dfd3-4cf1-b636-3df31bcc1b66",
+      "properties": {
+        "manager_OAA_idp": "john.telecom@smurfitwestrock.com"
+      }
+    },
+    {
+      "type": "AzureADUser",
+      "id": "f4be17af-0740-4b83-846f-53e83c4dede7",
+      "data_source_id": "d967f42b-dfd3-4cf1-b636-3df31bcc1b66",
+      "properties": {
+        "manager_OAA_idp": "johna@smurfitwestrock.com"
+      }
+    },
+    {
+      "type": "AzureADUser",
+      "id": "398c8b99-2067-45ba-88d8-6da839793e7d",
+      "data_source_id": "d7c96fa9-aa1e-47d0-8852-d0434de4deb2",
+      "properties": {
+        "manager_OAA_idp": "JoniS@smurfitwestrock.com"
+      }
+    },
+    {
+      "type": "AzureADUser",
+      "id": "44ae967a-4927-4071-9d18-3c2c5429754b",
+      "data_source_id": "ee1883a6-95e4-48ae-8d4d-af91d4340cd3",
+      "properties": {
+        "manager_OAA_idp": "josh_cyolo.io#EXT#@smurfitwestrock.com"
+      }
+    },
+    {
+      "type": "AzureADUser",
+      "id": "4b4d0176-acf2-4950-95f1-def451259355",
+      "data_source_id": "d967f42b-dfd3-4cf1-b636-3df31bcc1b66",
+      "properties": {
+        "manager_OAA_idp": "jwelch_glaciertrucking.com#EXT#@smurfitwestrock.com"
+      }
+    },
+    {
+      "type": "AzureADUser",
+      "id": "775c3dac-61da-495f-9600-8ac46219548d",
+      "data_source_id": "d967f42b-dfd3-4cf1-b636-3df31bcc1b66",
+      "properties": {
+        "manager_OAA_idp": "jwelch@smurfitwestrock.com"
+      }
+    },
+    {
+      "type": "AzureADUser",
+      "id": "c89f9022-6325-4871-bd1d-cb4d07fe78fe",
+      "data_source_id": "d967f42b-dfd3-4cf1-b636-3df31bcc1b66",
+      "properties": {
+        "manager_OAA_idp": "kevin.lee@smurfitwestrock.com"
+      }
+    },
+    {
+      "type": "AzureADUser",
+      "id": "7941028d-ed0b-4b3e-bd97-c9d44adae100",
+      "data_source_id": "748b21ea-959b-46ac-a2b4-6ed2f7858540",
+      "properties": {
+        "manager_OAA_idp": "kevin.p.moulton_gmail.com#EXT#@smurfitwestrock.com"
+      }
+    },
+    {
+      "type": "AzureADUser",
+      "id": "984941d5-6eab-437d-84b1-0fae976975f1",
+      "data_source_id": "748b21ea-959b-46ac-a2b4-6ed2f7858540",
+      "properties": {
+        "manager_OAA_idp": "tdemo@smurfitwestrock.com"
+      }
+    },
+    {
+      "type": "AzureADUser",
+      "id": "b5bffaae-20d1-4cbd-94f1-e8e285c5cf57",
+      "data_source_id": "748b21ea-959b-46ac-a2b4-6ed2f7858540",
+      "properties": {
+        "manager_OAA_idp": "kevinmoulton@smurfitwestrock.com"
+      }
+    },
+    {
+      "type": "AzureADUser",
+      "id": "b72d7a06-16de-4e89-a51d-f9bf02be6707",
+      "data_source_id": "9393a1d3-5429-4326-b48b-4d5e8fa2ddac",
+      "properties": {
+        "manager_OAA_idp": "LeeG@smurfitwestrock.com"
+      }
+    },
+    {
+      "type": "AzureADUser",
+      "id": "dfcb873c-9578-4556-8a48-364cf2684f93",
+      "data_source_id": "d7c96fa9-aa1e-47d0-8852-d0434de4deb2",
+      "properties": {
+        "manager_OAA_idp": "LeeG@smurfitwestrock.com"
+      }
+    },
+    {
+      "type": "AzureADUser",
+      "id": "1a4737ef-378b-4add-9996-d2ad6ea816a2",
+      "data_source_id": "9393a1d3-5429-4326-b48b-4d5e8fa2ddac",
+      "properties": {
+        "manager_OAA_idp": "leo.kim@smurfitwestrock.com"
+      }
+    },
+    {
+      "type": "AzureADUser",
+      "id": "055445dd-ca4a-405f-b862-394dc031072d",
+      "data_source_id": "d967f42b-dfd3-4cf1-b636-3df31bcc1b66",
+      "properties": {
+        "manager_OAA_idp": "lmartin42@smurfitwestrock.com"
+      }
+    },
+    {
+      "type": "AzureADUser",
+      "id": "c2bf80c9-5cc1-452b-9b1d-807d174dc5cc",
+      "data_source_id": "d967f42b-dfd3-4cf1-b636-3df31bcc1b66",
+      "properties": {
+        "manager_OAA_idp": "lmartin28@smurfitwestrock.com"
+      }
+    },
+    {
+      "type": "AzureADUser",
+      "id": "5ed5bca9-0a84-4a62-81cb-7cbd79a26be5",
+      "data_source_id": "d967f42b-dfd3-4cf1-b636-3df31bcc1b66",
+      "properties": {
+        "manager_OAA_idp": "lwilliams21@smurfitwestrock.com"
+      }
+    },
+    {
+      "type": "AzureADUser",
+      "id": "25db90f9-601e-422e-b8d8-c684ffad2633",
+      "data_source_id": "d7c96fa9-aa1e-47d0-8852-d0434de4deb2",
+      "properties": {
+        "manager_OAA_idp": "LidiaH@smurfitwestrock.com"
+      }
+    },
+    {
+      "type": "AzureADUser",
+      "id": "d73be2df-a524-4ac0-ad39-6c8de032fc25",
+      "data_source_id": "9393a1d3-5429-4326-b48b-4d5e8fa2ddac",
+      "properties": {
+        "manager_OAA_idp": "linda.evans@smurfitwestrock.com"
+      }
+    },
+    {
+      "type": "AzureADUser",
+      "id": "80e919ad-81f9-4d7a-b1ce-74bd3d0f5926",
+      "data_source_id": "8ba6737d-7d21-4a9b-961b-7c56ae431e71",
+      "properties": {
+        "manager_OAA_idp": "lindsayhbuchanan_gmail.com#EXT#@smurfitwestrock.com"
+      }
+    },
+    {
+      "type": "AzureADUser",
+      "id": "348654e3-3f6c-4dd5-9d38-198ce700046c",
+      "data_source_id": "d967f42b-dfd3-4cf1-b636-3df31bcc1b66",
+      "properties": {
+        "manager_OAA_idp": "lindsay.pharm@smurfitwestrock.com"
+      }
+    },
+    {
+      "type": "AzureADUser",
+      "id": "37922f7b-3971-44aa-b503-833f0f054b4e",
+      "data_source_id": "d967f42b-dfd3-4cf1-b636-3df31bcc1b66",
+      "properties": {
+        "manager_OAA_idp": "lisa.thompson.auto@smurfitwestrock.com"
+      }
+    },
+    {
+      "type": "AzureADUser",
+      "id": "39dc7ce3-98aa-45f0-84f5-268590ac94f0",
+      "data_source_id": "d967f42b-dfd3-4cf1-b636-3df31bcc1b66",
+      "properties": {
+        "manager_OAA_idp": "lisa.telecom@smurfitwestrock.com"
+      }
+    },
+    {
+      "type": "AzureADUser",
+      "id": "589902d2-040d-470e-acd8-2c9149cce27e",
+      "data_source_id": "d967f42b-dfd3-4cf1-b636-3df31bcc1b66",
+      "properties": {
+        "manager_OAA_idp": "lisa.tech@smurfitwestrock.com"
+      }
+    },
+    {
+      "type": "AzureADUser",
+      "id": "617d891f-4088-40d6-8ab9-4067d8e0cab2",
+      "data_source_id": "d967f42b-dfd3-4cf1-b636-3df31bcc1b66",
+      "properties": {
+        "manager_OAA_idp": "lisa.sports@smurfitwestrock.com"
+      }
+    },
+    {
+      "type": "AzureADUser",
+      "id": "743f4847-c6b0-4878-a841-395618ada34e",
+      "data_source_id": "d967f42b-dfd3-4cf1-b636-3df31bcc1b66",
+      "properties": {
+        "manager_OAA_idp": "lisa.media@smurfitwestrock.com"
+      }
+    },
+    {
+      "type": "AzureADUser",
+      "id": "86cefb8c-aa1e-41ba-b689-de1320234548",
+      "data_source_id": "d967f42b-dfd3-4cf1-b636-3df31bcc1b66",
+      "properties": {
+        "manager_OAA_idp": "lisa.environment@smurfitwestrock.com"
+      }
+    },
+    {
+      "type": "AzureADUser",
+      "id": "8739a61c-6c38-4685-9e26-51900bcfef19",
+      "data_source_id": "d967f42b-dfd3-4cf1-b636-3df31bcc1b66",
+      "properties": {
+        "manager_OAA_idp": "lisa.agri@smurfitwestrock.com"
+      }
+    },
+    {
+      "type": "AzureADUser",
+      "id": "ba87d6d2-baad-40d6-805d-43d451f94782",
+      "data_source_id": "d967f42b-dfd3-4cf1-b636-3df31bcc1b66",
+      "properties": {
+        "manager_OAA_idp": "lisa.pharm@smurfitwestrock.com"
+      }
+    },
+    {
+      "type": "AzureADUser",
+      "id": "6e66f1fd-8c18-48b1-bc70-d845ce6c93d6",
+      "data_source_id": "9393a1d3-5429-4326-b48b-4d5e8fa2ddac",
+      "properties": {
+        "manager_OAA_idp": "Liz.Volu@smurfitwestrock.com"
+      }
+    },
+    {
+      "type": "AzureADUser",
+      "id": "87c74d38-a9b7-495c-82ad-06216f2b71d5",
+      "data_source_id": "d967f42b-dfd3-4cf1-b636-3df31bcc1b66",
+      "properties": {
+        "manager_OAA_idp": "lgonzalez44@smurfitwestrock.com"
+      }
+    },
+    {
+      "type": "AzureADUser",
+      "id": "9cd5b436-6ba8-4c64-832e-890f086d90b9",
+      "data_source_id": "d967f42b-dfd3-4cf1-b636-3df31bcc1b66",
+      "properties": {
+        "manager_OAA_idp": "ljones2@smurfitwestrock.com"
+      }
+    },
+    {
+      "type": "AzureADUser",
+      "id": "35384c1b-f937-4fb1-8ed0-971e7c8ee807",
+      "data_source_id": "d967f42b-dfd3-4cf1-b636-3df31bcc1b66",
+      "properties": {
+        "manager_OAA_idp": "lmoore3@smurfitwestrock.com"
+      }
+    },
+    {
+      "type": "AzureADUser",
+      "id": "d3c90e71-5066-4974-84cf-77bf0708c9f5",
+      "data_source_id": "d967f42b-dfd3-4cf1-b636-3df31bcc1b66",
+      "properties": {
+        "manager_OAA_idp": "lmoore45@smurfitwestrock.com"
+      }
+    },
+    {
+      "type": "AzureADUser",
+      "id": "c22c3b20-bbbb-4971-8b3a-cf17453285cc",
+      "data_source_id": "d967f42b-dfd3-4cf1-b636-3df31bcc1b66",
+      "properties": {
+        "manager_OAA_idp": "lrodriguez37@smurfitwestrock.com"
+      }
+    },
+    {
+      "type": "AzureADUser",
+      "id": "e45393fc-d0eb-4b5d-897b-ca1fb9a7510f",
+      "data_source_id": "9393a1d3-5429-4326-b48b-4d5e8fa2ddac",
+      "properties": {
+        "manager_OAA_idp": "Lucas.Volu@smurfitwestrock.com"
+      }
+    },
+    {
+      "type": "AzureADUser",
+      "id": "4bdca41d-4de9-4f3a-a60b-542a9efc86d2",
+      "data_source_id": "d7c96fa9-aa1e-47d0-8852-d0434de4deb2",
+      "properties": {
+        "manager_OAA_idp": "LynneR@smurfitwestrock.com"
+      }
+    },
+    {
+      "type": "AzureADUser",
+      "id": "47aabba3-03f3-4572-b81d-77b4eaa4533c",
+      "data_source_id": "d967f42b-dfd3-4cf1-b636-3df31bcc1b66",
+      "properties": {
+        "manager_OAA_idp": "mthomas35@smurfitwestrock.com"
+      }
+    },
+    {
+      "type": "AzureADUser",
+      "id": "686d197c-dc97-463b-a9c2-6bbf26d28da0",
+      "data_source_id": "d967f42b-dfd3-4cf1-b636-3df31bcc1b66",
+      "properties": {
+        "manager_OAA_idp": "mham@smurfitwestrock.com"
+      }
+    },
+    {
+      "type": "AzureADUser",
+      "id": "ace77de0-ef5b-4dce-81cc-c885a7285761",
+      "data_source_id": "9393a1d3-5429-4326-b48b-4d5e8fa2ddac",
+      "properties": {
+        "manager_OAA_idp": "mahmoud.fadl@smurfitwestrock.com"
+      }
+    },
+    {
+      "type": "AzureADUser",
+      "id": "ab3b59cb-fcda-4f9c-bc84-7425b8612e21",
+      "data_source_id": "9393a1d3-5429-4326-b48b-4d5e8fa2ddac",
+      "properties": {
+        "manager_OAA_idp": "mahmoud.mahrous@smurfitwestrock.com"
+      }
+    },
+    {
+      "type": "AzureADUser",
+      "id": "5a08897e-7fab-41ca-b7b5-7ffd6caadee6",
+      "data_source_id": "9393a1d3-5429-4326-b48b-4d5e8fa2ddac",
+      "properties": {
+        "manager_OAA_idp": "mmahrous@smurfitwestrock.com"
+      }
+    },
+    {
+      "type": "AzureADUser",
+      "id": "2ea9a719-a971-4312-9e5b-90dbe0794a96",
+      "data_source_id": "9393a1d3-5429-4326-b48b-4d5e8fa2ddac",
+      "properties": {
+        "manager_OAA_idp": "mahmoud.mahrous_flairstech.com#EXT#@smurfitwestrock.com"
+      }
+    },
+    {
+      "type": "AzureADUser",
+      "id": "d3127cdc-cfcb-45c7-a6bb-0c449dc4aefc",
+      "data_source_id": "9393a1d3-5429-4326-b48b-4d5e8fa2ddac",
+      "properties": {
+        "manager_OAA_idp": "manager@smurfitwestrock.com"
+      }
+    },
+    {
+      "type": "AzureADUser",
+      "id": "d5cd7251-c809-4481-8298-4fe1a7c5b806",
+      "data_source_id": "9393a1d3-5429-4326-b48b-4d5e8fa2ddac",
+      "properties": {
+        "manager_OAA_idp": "mao.cristina@smurfitwestrock.com"
+      }
+    },
+    {
+      "type": "AzureADUser",
+      "id": "b965cbfe-5481-4ad4-ba8e-81723566f05e",
+      "data_source_id": "9393a1d3-5429-4326-b48b-4d5e8fa2ddac",
+      "properties": {
+        "manager_OAA_idp": "Marcello.Cristina@smurfitwestrock.com"
+      }
+    },
+    {
+      "type": "AzureADUser",
+      "id": "1c05945c-9ddb-4fd2-a3d3-6ef662567d3a",
+      "data_source_id": "9393a1d3-5429-4326-b48b-4d5e8fa2ddac",
+      "properties": {
+        "manager_OAA_idp": "maluis4@smurfitwestrock.com"
+      }
+    },
+    {
+      "type": "AzureADUser",
+      "id": "60595959-4121-4ec8-b8d9-53aaee9826f2",
+      "data_source_id": "9393a1d3-5429-4326-b48b-4d5e8fa2ddac",
+      "properties": {
+        "manager_OAA_idp": "marcelo_gmail.com#EXT#@smurfitwestrock.com"
+      }
+    },
+    {
+      "type": "AzureADUser",
+      "id": "22933b9f-c209-4d5a-8bb9-302985949c71",
+      "data_source_id": "9393a1d3-5429-4326-b48b-4d5e8fa2ddac",
+      "properties": {
+        "manager_OAA_idp": "Marcelo.Luis@smurfitwestrock.com"
+      }
+    },
+    {
+      "type": "AzureADUser",
+      "id": "544ab61f-0c02-40b5-bfc3-8a346ef908b4",
+      "data_source_id": "9393a1d3-5429-4326-b48b-4d5e8fa2ddac",
+      "properties": {
+        "manager_OAA_idp": "Marcia.Cristina@smurfitwestrock.com"
+      }
+    },
+    {
+      "type": "AzureADUser",
+      "id": "60ad040b-2fee-47ba-b1f3-b61fca5c41d7",
+      "data_source_id": "9393a1d3-5429-4326-b48b-4d5e8fa2ddac",
+      "properties": {
+        "manager_OAA_idp": "Marcio.Cristina@smurfitwestrock.com"
+      }
+    },
+    {
+      "type": "AzureADUser",
+      "id": "97d3c86e-1189-488f-8a75-fb48d2360975",
+      "data_source_id": "9393a1d3-5429-4326-b48b-4d5e8fa2ddac",
+      "properties": {
+        "manager_OAA_idp": "Marco.Luis@smurfitwestrock.com"
+      }
+    },
+    {
+      "type": "AzureADUser",
+      "id": "d6296210-e7a5-4fd7-8649-1f24a1805418",
+      "data_source_id": "9393a1d3-5429-4326-b48b-4d5e8fa2ddac",
+      "properties": {
+        "manager_OAA_idp": "Marcos.Luis@smurfitwestrock.com"
+      }
+    },
+    {
+      "type": "AzureADUser",
+      "id": "7441e6e0-0045-4933-a0a8-f1007e28e684",
+      "data_source_id": "d967f42b-dfd3-4cf1-b636-3df31bcc1b66",
+      "properties": {
+        "manager_OAA_idp": "marcus.thompson@smurfitwestrock.com"
+      }
+    },
+    {
+      "type": "AzureADUser",
+      "id": "d0b4a172-28c4-4066-8989-5908ba3172d1",
+      "data_source_id": "9393a1d3-5429-4326-b48b-4d5e8fa2ddac",
+      "properties": {
+        "manager_OAA_idp": "Maria.Cristina@smurfitwestrock.com"
+      }
+    },
+    {
+      "type": "AzureADUser",
+      "id": "52689361-69c2-427a-a0b6-5ebe1874eed5",
+      "data_source_id": "9393a1d3-5429-4326-b48b-4d5e8fa2ddac",
+      "properties": {
+        "manager_OAA_idp": "Maria.Luis@smurfitwestrock.com"
+      }
+    },
+    {
+      "type": "AzureADUser",
+      "id": "252abca0-c173-450b-b1fe-40196caef6bb",
+      "data_source_id": "9393a1d3-5429-4326-b48b-4d5e8fa2ddac",
+      "properties": {
+        "manager_OAA_idp": "Mariano.Cristina@smurfitwestrock.com"
+      }
+    },
+    {
+      "type": "AzureADUser",
+      "id": "04f76fa9-412e-4741-b6f2-381ff6fb30f0",
+      "data_source_id": "d967f42b-dfd3-4cf1-b636-3df31bcc1b66",
+      "properties": {
+        "manager_OAA_idp": "mbarrett@smurfitwestrock.com"
+      }
+    },
+    {
+      "type": "AzureADUser",
+      "id": "ba7bfa9d-3492-4442-950a-1d97bd513c9a",
+      "data_source_id": "d967f42b-dfd3-4cf1-b636-3df31bcc1b66",
+      "properties": {
+        "manager_OAA_idp": "martin.barrett@smurfitwestrock.com"
+      }
+    },
+    {
+      "type": "AzureADUser",
+      "id": "6c9db9ed-340c-492f-93c0-3d520decf696",
+      "data_source_id": "9393a1d3-5429-4326-b48b-4d5e8fa2ddac",
+      "properties": {
+        "manager_OAA_idp": "mjohnson@smurfitwestrock.com"
+      }
+    },
+    {
+      "type": "AzureADUser",
+      "id": "e385f7d5-118c-42d3-8eac-c864050651e3",
+      "data_source_id": "9393a1d3-5429-4326-b48b-4d5e8fa2ddac",
+      "properties": {
+        "manager_OAA_idp": "mary.johnson@smurfitwestrock.com"
+      }
+    },
+    {
+      "type": "AzureADUser",
+      "id": "01318ecf-9cf3-41c1-bd53-c310c8dc239a",
+      "data_source_id": "8ba6737d-7d21-4a9b-961b-7c56ae431e71",
+      "properties": {
+        "manager_OAA_idp": "Maryanne.Schramke@smurfitwestrock.com"
+      }
+    },
+    {
+      "type": "AzureADUser",
+      "id": "f7a63dfb-1348-4209-adf3-71c57a97da99",
+      "data_source_id": "9393a1d3-5429-4326-b48b-4d5e8fa2ddac",
+      "properties": {
+        "manager_OAA_idp": "Matt.Volu@smurfitwestrock.com"
+      }
+    },
+    {
+      "type": "AzureADUser",
+      "id": "4c0f7ef8-ef5a-4580-989b-bcd4c44a31d3",
+      "data_source_id": "d967f42b-dfd3-4cf1-b636-3df31bcc1b66",
+      "properties": {
+        "manager_OAA_idp": "mjackson25@smurfitwestrock.com"
+      }
+    },
+    {
+      "type": "AzureADUser",
+      "id": "c4364cf6-fc9c-4e7d-b9b0-8f9b2e2bc372",
+      "data_source_id": "d967f42b-dfd3-4cf1-b636-3df31bcc1b66",
+      "properties": {
+        "manager_OAA_idp": "mlopez41@smurfitwestrock.com"
+      }
+    },
+    {
+      "type": "AzureADUser",
+      "id": "d71c8791-daf1-40d8-8e47-da6d7c45d7fb",
+      "data_source_id": "d7c96fa9-aa1e-47d0-8852-d0434de4deb2",
+      "properties": {
+        "manager_OAA_idp": "MeganB@smurfitwestrock.com"
+      }
+    },
+    {
+      "type": "AzureADUser",
+      "id": "4560f40c-cb98-4a93-b385-19dcbe1bdc6c",
+      "data_source_id": "d967f42b-dfd3-4cf1-b636-3df31bcc1b66",
+      "properties": {
+        "manager_OAA_idp": "mjones18@smurfitwestrock.com"
+      }
+    },
+    {
+      "type": "AzureADUser",
+      "id": "21edb607-fb3d-46ef-9b38-d3284948da6f",
+      "data_source_id": "d967f42b-dfd3-4cf1-b636-3df31bcc1b66",
+      "properties": {
+        "manager_OAA_idp": "michael.media@smurfitwestrock.com"
+      }
+    },
+    {
+      "type": "AzureADUser",
+      "id": "536f0989-9c6b-478f-9a2f-4f34d1a0a756",
+      "data_source_id": "d967f42b-dfd3-4cf1-b636-3df31bcc1b66",
+      "properties": {
+        "manager_OAA_idp": "michael.pharm@smurfitwestrock.com"
+      }
+    },
+    {
+      "type": "AzureADUser",
+      "id": "75c049d8-b209-4263-8ddf-582f0d2014ff",
+      "data_source_id": "d967f42b-dfd3-4cf1-b636-3df31bcc1b66",
+      "properties": {
+        "manager_OAA_idp": "michael.sports@smurfitwestrock.com"
+      }
+    },
+    {
+      "type": "AzureADUser",
+      "id": "9ec43dad-c7cf-43d7-b1c7-5a1436864769",
+      "data_source_id": "d967f42b-dfd3-4cf1-b636-3df31bcc1b66",
+      "properties": {
+        "manager_OAA_idp": "michael.environment@smurfitwestrock.com"
+      }
+    },
+    {
+      "type": "AzureADUser",
+      "id": "b38f91fd-e208-4651-9fc6-4223abdbc343",
+      "data_source_id": "d967f42b-dfd3-4cf1-b636-3df31bcc1b66",
+      "properties": {
+        "manager_OAA_idp": "michael.chen.auto@smurfitwestrock.com"
+      }
+    },
+    {
+      "type": "AzureADUser",
+      "id": "d900af3e-46ef-4e7a-83e3-d3cae1538d73",
+      "data_source_id": "d967f42b-dfd3-4cf1-b636-3df31bcc1b66",
+      "properties": {
+        "manager_OAA_idp": "michael.telecom@smurfitwestrock.com"
+      }
+    },
+    {
+      "type": "AzureADUser",
+      "id": "f4b7de2b-1ea6-414c-ac35-89dce610df72",
+      "data_source_id": "d967f42b-dfd3-4cf1-b636-3df31bcc1b66",
+      "properties": {
+        "manager_OAA_idp": "michael.tech@smurfitwestrock.com"
+      }
+    },
+    {
+      "type": "AzureADUser",
+      "id": "dc72932c-7348-4043-b44c-9d267119a729",
+      "data_source_id": "9393a1d3-5429-4326-b48b-4d5e8fa2ddac",
+      "properties": {
+        "manager_OAA_idp": "michael.lee@smurfitwestrock.com"
+      }
+    },
+    {
+      "type": "AzureADUser",
+      "id": "e54b29bc-ae48-4cdc-8889-88fbe25d3261",
+      "data_source_id": "d967f42b-dfd3-4cf1-b636-3df31bcc1b66",
+      "properties": {
+        "manager_OAA_idp": "mmoore23@smurfitwestrock.com"
+      }
+    },
+    {
+      "type": "AzureADUser",
+      "id": "51e52084-f8cb-45fa-bc57-8a23aa428d1f",
+      "data_source_id": "d967f42b-dfd3-4cf1-b636-3df31bcc1b66",
+      "properties": {
+        "manager_OAA_idp": "michael.sterling@smurfitwestrock.com"
+      }
+    },
+    {
+      "type": "AzureADUser",
+      "id": "866b937d-beb7-4d08-a7b2-5289846f45ef",
+      "data_source_id": "9393a1d3-5429-4326-b48b-4d5e8fa2ddac",
+      "properties": {
+        "manager_OAA_idp": "Mike.Campbell@smurfitwestrock.com"
+      }
+    },
+    {
+      "type": "AzureADUser",
+      "id": "d77d9029-acfd-455a-b2d5-828e9404005d",
+      "data_source_id": "d967f42b-dfd3-4cf1-b636-3df31bcc1b66",
+      "properties": {
+        "manager_OAA_idp": "mike.treptow@smurfitwestrock.com"
+      }
+    },
+    {
+      "type": "AzureADUser",
+      "id": "f6db89c0-ef93-46ea-9171-226e6bbb9a8c",
+      "data_source_id": "9393a1d3-5429-4326-b48b-4d5e8fa2ddac",
+      "properties": {
+        "manager_OAA_idp": "MiriamG@smurfitwestrock.com"
+      }
+    },
+    {
+      "type": "AzureADUser",
+      "id": "7b5175d3-e584-4455-8174-cc7cb6a72793",
+      "data_source_id": "d7c96fa9-aa1e-47d0-8852-d0434de4deb2",
+      "properties": {
+        "manager_OAA_idp": "MiriamG@smurfitwestrock.com"
+      }
+    },
+    {
+      "type": "AzureADUser",
+      "id": "10438042-54eb-48e2-8593-2d35f1877d8e",
+      "data_source_id": "9393a1d3-5429-4326-b48b-4d5e8fa2ddac",
+      "properties": {
+        "manager_OAA_idp": "mohamed.elnagar_flairstech.com#EXT#@smurfitwestrock.com"
+      }
+    },
+    {
+      "type": "AzureADUser",
+      "id": "c36e7c90-5fcd-4553-8684-351a6f8abf86",
+      "data_source_id": "9393a1d3-5429-4326-b48b-4d5e8fa2ddac",
+      "properties": {
+        "manager_OAA_idp": "mohamed.zain@smurfitwestrock.com"
+      }
+    },
+    {
+      "type": "AzureADUser",
+      "id": "78cd9b7f-3692-425f-a61a-50f97df55efb",
+      "data_source_id": "9393a1d3-5429-4326-b48b-4d5e8fa2ddac",
+      "properties": {
+        "manager_OAA_idp": "mohamedzain42_gmail.com#EXT#@smurfitwestrock.com"
+      }
+    },
+    {
+      "type": "AzureADUser",
+      "id": "2a598571-7818-408a-801e-4345ea4b0f60",
+      "data_source_id": "9393a1d3-5429-4326-b48b-4d5e8fa2ddac",
+      "properties": {
+        "manager_OAA_idp": "mostafa.eid@smurfitwestrock.com"
+      }
+    },
+    {
+      "type": "AzureADUser",
+      "id": "29720514-c260-48c3-a48a-2625f7d0aff8",
+      "data_source_id": "9393a1d3-5429-4326-b48b-4d5e8fa2ddac",
+      "properties": {
+        "manager_OAA_idp": "muhammed.elkady@smurfitwestrock.com"
+      }
+    },
+    {
+      "type": "AzureADUser",
+      "id": "94a15ef8-0c3c-4e45-8d25-70763d6443f5",
+      "data_source_id": "9393a1d3-5429-4326-b48b-4d5e8fa2ddac",
+      "properties": {
+        "manager_OAA_idp": "NestorW@smurfitwestrock.com"
+      }
+    },
+    {
+      "type": "AzureADUser",
+      "id": "3cc3ae80-65e8-48dc-85f6-370b853e84ce",
+      "data_source_id": "d7c96fa9-aa1e-47d0-8852-d0434de4deb2",
+      "properties": {
+        "manager_OAA_idp": "NestorW@smurfitwestrock.com"
+      }
+    },
+    {
+      "type": "AzureADUser",
+      "id": "424401ca-74d9-4462-ad25-0bcb7d5d0b4b",
+      "data_source_id": "9393a1d3-5429-4326-b48b-4d5e8fa2ddac",
+      "properties": {
+        "manager_OAA_idp": "New.Hire100@smurfitwestrock.com"
+      }
+    },
+    {
+      "type": "AzureADUser",
+      "id": "426a369c-176e-41bd-b71c-ab8c27de03ab",
+      "data_source_id": "9393a1d3-5429-4326-b48b-4d5e8fa2ddac",
+      "properties": {
+        "manager_OAA_idp": "New.Hire101@smurfitwestrock.com"
+      }
+    },
+    {
+      "type": "AzureADUser",
+      "id": "769290f6-9a70-4b0f-acc1-5814f34c7d4a",
+      "data_source_id": "9393a1d3-5429-4326-b48b-4d5e8fa2ddac",
+      "properties": {
+        "manager_OAA_idp": "NewUser@smurfitwestrock.com"
+      }
+    },
+    {
+      "type": "AzureADUser",
+      "id": "39feccb9-d400-4bb0-a086-7572182a9257",
+      "data_source_id": "d967f42b-dfd3-4cf1-b636-3df31bcc1b66",
+      "properties": {
+        "manager_OAA_idp": "ngamb@smurfitwestrock.com"
+      }
+    },
+    {
+      "type": "AzureADUser",
+      "id": "8a386abd-8326-47dc-b7cc-1760fd8c7413",
+      "data_source_id": "9393a1d3-5429-4326-b48b-4d5e8fa2ddac",
+      "properties": {
+        "manager_OAA_idp": "nina.patel@smurfitwestrock.com"
+      }
+    },
+    {
+      "type": "AzureADUser",
+      "id": "d8c24766-6e3d-4927-a78e-bbbe555f8c99",
+      "data_source_id": "d967f42b-dfd3-4cf1-b636-3df31bcc1b66",
+      "properties": {
+        "manager_OAA_idp": "noah.telecom@smurfitwestrock.com"
+      }
+    },
+    {
+      "type": "AzureADUser",
+      "id": "092b8e88-0d88-437f-938b-3612d38773f9",
+      "data_source_id": "9393a1d3-5429-4326-b48b-4d5e8fa2ddac",
+      "properties": {
+        "manager_OAA_idp": "Admin@smurfitwestrock.com"
+      }
+    },
+    {
+      "type": "AzureADUser",
+      "id": "e05c9c23-70f4-42ac-895d-6c9099467ae9",
+      "data_source_id": "9393a1d3-5429-4326-b48b-4d5e8fa2ddac",
+      "properties": {
+        "manager_OAA_idp": "NormalUser@smurfitwestrock.com"
+      }
+    },
+    {
+      "type": "AzureADUser",
+      "id": "9e50386a-0953-426d-9118-be52384bd26b",
+      "data_source_id": "d967f42b-dfd3-4cf1-b636-3df31bcc1b66",
+      "properties": {
+        "manager_OAA_idp": "ogarcia32@smurfitwestrock.com"
+      }
+    },
+    {
+      "type": "AzureADUser",
+      "id": "24efd105-86d6-48ae-9901-1060438a9fd0",
+      "data_source_id": "d967f42b-dfd3-4cf1-b636-3df31bcc1b66",
+      "properties": {
+        "manager_OAA_idp": "olopez46@smurfitwestrock.com"
+      }
+    },
+    {
+      "type": "AzureADUser",
+      "id": "4680b04c-5477-47b5-87c7-87af862d4315",
+      "data_source_id": "d967f42b-dfd3-4cf1-b636-3df31bcc1b66",
+      "properties": {
+        "manager_OAA_idp": "owilson27@smurfitwestrock.com"
+      }
+    },
+    {
+      "type": "AzureADUser",
+      "id": "05b06f5a-d996-4bb1-b635-7f58d61c349f",
+      "data_source_id": "d967f42b-dfd3-4cf1-b636-3df31bcc1b66",
+      "properties": {
+        "manager_OAA_idp": "omartinez39@smurfitwestrock.com"
+      }
+    },
+    {
+      "type": "AzureADUser",
+      "id": "856a7600-96ce-4b42-9c93-58ac68b04b47",
+      "data_source_id": "9393a1d3-5429-4326-b48b-4d5e8fa2ddac",
+      "properties": {
+        "manager_OAA_idp": "olivia.white@smurfitwestrock.com"
+      }
+    },
+    {
+      "type": "AzureADUser",
+      "id": "8616bdb8-4c12-4808-9392-f1ce19704da4",
+      "data_source_id": "9393a1d3-5429-4326-b48b-4d5e8fa2ddac",
+      "properties": {
+        "manager_OAA_idp": "PattiF@smurfitwestrock.com"
+      }
+    },
+    {
+      "type": "AzureADUser",
+      "id": "2431e6a2-fc4e-437c-8fb3-211a09f8b9f3",
+      "data_source_id": "d7c96fa9-aa1e-47d0-8852-d0434de4deb2",
+      "properties": {
+        "manager_OAA_idp": "PattiF@smurfitwestrock.com"
+      }
+    },
+    {
+      "type": "AzureADUser",
+      "id": "07010f1d-3e66-4951-89b1-03b6aba0d17e",
+      "data_source_id": "9393a1d3-5429-4326-b48b-4d5e8fa2ddac",
+      "properties": {
+        "manager_OAA_idp": "pedro.volu_sailpoint.com#EXT#@smurfitwestrock.com"
+      }
+    },
+    {
+      "type": "AzureADUser",
+      "id": "05ff5b8f-b3fe-4612-97d2-1ccbb2c3a744",
+      "data_source_id": "9393a1d3-5429-4326-b48b-4d5e8fa2ddac",
+      "properties": {
+        "manager_OAA_idp": "pedro.volu@smurfitwestrock.com"
+      }
+    },
+    {
+      "type": "AzureADUser",
+      "id": "39a7bb4d-3913-4b3f-b8c4-4f5c8320e38c",
+      "data_source_id": "d7c96fa9-aa1e-47d0-8852-d0434de4deb2",
+      "properties": {
+        "manager_OAA_idp": "PradeepG@smurfitwestrock.com"
+      }
+    },
+    {
+      "type": "AzureADUser",
+      "id": "4aef0387-0d17-462b-9b7d-54852d1940eb",
+      "data_source_id": "d967f42b-dfd3-4cf1-b636-3df31bcc1b66",
+      "properties": {
+        "manager_OAA_idp": "priya.patel@smurfitwestrock.com"
+      }
+    },
+    {
+      "type": "AzureADUser",
+      "id": "19d22a94-66f3-4b09-a4af-9f8bde05ae05",
+      "data_source_id": "9393a1d3-5429-4326-b48b-4d5e8fa2ddac",
+      "properties": {
+        "manager_OAA_idp": "rabab.farid@smurfitwestrock.com"
+      }
+    },
+    {
+      "type": "AzureADUser",
+      "id": "954ab75c-dd7b-4064-a6de-61b138338f10",
+      "data_source_id": "9393a1d3-5429-4326-b48b-4d5e8fa2ddac",
+      "properties": {
+        "manager_OAA_idp": "raghda.othman_flairstech.com#EXT#@smurfitwestrock.com"
+      }
+    },
+    {
+      "type": "AzureADUser",
+      "id": "e2b2ab54-f526-45da-b5cc-b87c66a1bfc1",
+      "data_source_id": "9393a1d3-5429-4326-b48b-4d5e8fa2ddac",
+      "properties": {
+        "manager_OAA_idp": "raj.kumar@smurfitwestrock.com"
+      }
+    },
+    {
+      "type": "AzureADUser",
+      "id": "34ed65ff-f37e-4928-b09e-bd61ac8068e8",
+      "data_source_id": "d967f42b-dfd3-4cf1-b636-3df31bcc1b66",
+      "properties": {
+        "manager_OAA_idp": "Rajiv.Dewan@smurfitwestrock.com"
+      }
+    },
+    {
+      "type": "AzureADUser",
+      "id": "e734f2b0-f68f-478c-8cc4-9705260bc20b",
+      "data_source_id": "ee1883a6-95e4-48ae-8d4d-af91d4340cd3",
+      "properties": {
+        "manager_OAA_idp": "ranshe_ranshe.xyz#EXT#@smurfitwestrock.com"
+      }
+    },
+    {
+      "type": "AzureADUser",
+      "id": "d0d0e2c0-1101-4f4e-b9e3-f0bf21d9148b",
+      "data_source_id": "9393a1d3-5429-4326-b48b-4d5e8fa2ddac",
+      "properties": {
+        "manager_OAA_idp": "Reinaldo.Thomaz@smurfitwestrock.com"
+      }
+    },
+    {
+      "type": "AzureADUser",
+      "id": "1c48f8c6-4f1a-4f84-af78-f248b724aeb5",
+      "data_source_id": "9393a1d3-5429-4326-b48b-4d5e8fa2ddac",
+      "properties": {
+        "manager_OAA_idp": "Robert.Brown@smurfitwestrock.com"
+      }
+    },
+    {
+      "type": "AzureADUser",
+      "id": "11a1c73f-7237-4619-a6ae-0c9d9e94c3f3",
+      "data_source_id": "d7c96fa9-aa1e-47d0-8852-d0434de4deb2",
+      "properties": {
+        "manager_OAA_idp": "rugbyprob73_gmail.com#EXT#@smurfitwestrock.com"
+      }
+    },
+    {
+      "type": "AzureADUser",
+      "id": "de192ffa-b75a-468f-9198-ea188924f287",
+      "data_source_id": "d967f42b-dfd3-4cf1-b636-3df31bcc1b66",
+      "properties": {
+        "manager_OAA_idp": "ryan.johnson1@smurfitwestrock.com"
+      }
+    },
+    {
+      "type": "AzureADUser",
+      "id": "2d6d2ed8-0987-44d5-8cd3-75985173737d",
+      "data_source_id": "9393a1d3-5429-4326-b48b-4d5e8fa2ddac",
+      "properties": {
+        "manager_OAA_idp": "sally.mokhtar@smurfitwestrock.com"
+      }
+    },
+    {
+      "type": "AzureADUser",
+      "id": "5b8b48bb-040b-4be7-884a-9c2bb6eb3c39",
+      "data_source_id": "d967f42b-dfd3-4cf1-b636-3df31bcc1b66",
+      "properties": {
+        "manager_OAA_idp": "sorabh.chopra@smurfitwestrock.com"
+      }
+    },
+    {
+      "type": "AzureADUser",
+      "id": "35fcf22b-cb1e-4220-9e9c-02be6dbb094a",
+      "data_source_id": "d967f42b-dfd3-4cf1-b636-3df31bcc1b66",
+      "properties": {
+        "manager_OAA_idp": "samantha.kumar@smurfitwestrock.com"
+      }
+    },
+    {
+      "type": "AzureADUser",
+      "id": "2a4bd345-1c17-403a-b06d-2b21a23b7b83",
+      "data_source_id": "d967f42b-dfd3-4cf1-b636-3df31bcc1b66",
+      "properties": {
+        "manager_OAA_idp": "sarah.agri@smurfitwestrock.com"
+      }
+    },
+    {
+      "type": "AzureADUser",
+      "id": "3ac60a7a-375f-47d6-94f0-fe6262da397e",
+      "data_source_id": "d967f42b-dfd3-4cf1-b636-3df31bcc1b66",
+      "properties": {
+        "manager_OAA_idp": "sarah.telecom@smurfitwestrock.com"
+      }
+    },
+    {
+      "type": "AzureADUser",
+      "id": "5c7ca2ed-f3d1-4bb2-b156-289fdb0c1ff7",
+      "data_source_id": "d967f42b-dfd3-4cf1-b636-3df31bcc1b66",
+      "properties": {
+        "manager_OAA_idp": "sarah.environment@smurfitwestrock.com"
+      }
+    },
+    {
+      "type": "AzureADUser",
+      "id": "6e69421a-387d-4805-b695-43c8f5c06683",
+      "data_source_id": "d967f42b-dfd3-4cf1-b636-3df31bcc1b66",
+      "properties": {
+        "manager_OAA_idp": "sarah.media@smurfitwestrock.com"
+      }
+    },
+    {
+      "type": "AzureADUser",
+      "id": "91054cc9-702c-4023-9c72-53e91a62f54f",
+      "data_source_id": "d967f42b-dfd3-4cf1-b636-3df31bcc1b66",
+      "properties": {
+        "manager_OAA_idp": "sarah.johnson.auto@smurfitwestrock.com"
+      }
+    },
+    {
+      "type": "AzureADUser",
+      "id": "e2b98454-a3a9-4c83-a157-a5faca7364bf",
+      "data_source_id": "d967f42b-dfd3-4cf1-b636-3df31bcc1b66",
+      "properties": {
+        "manager_OAA_idp": "sarah.pharm@smurfitwestrock.com"
+      }
+    },
+    {
+      "type": "AzureADUser",
+      "id": "e65baf5f-d67c-48bd-9118-2892a1c5d867",
+      "data_source_id": "d967f42b-dfd3-4cf1-b636-3df31bcc1b66",
+      "properties": {
+        "manager_OAA_idp": "sarah.sports@smurfitwestrock.com"
+      }
+    },
+    {
+      "type": "AzureADUser",
+      "id": "ffa66a0c-42b2-4433-9630-285825e46608",
+      "data_source_id": "d967f42b-dfd3-4cf1-b636-3df31bcc1b66",
+      "properties": {
+        "manager_OAA_idp": "sarah.tech@smurfitwestrock.com"
+      }
+    },
+    {
+      "type": "AzureADUser",
+      "id": "11a1f805-a0fa-4999-8f58-bc46a61715e4",
+      "data_source_id": "8ba6737d-7d21-4a9b-961b-7c56ae431e71",
+      "properties": {
+        "manager_OAA_idp": "Sasha.Bundy@smurfitwestrock.com"
+      }
+    },
+    {
+      "type": "AzureADUser",
+      "id": "f7071166-d9f8-48e0-ab49-2c3309ebfde0",
+      "data_source_id": "d967f42b-dfd3-4cf1-b636-3df31bcc1b66",
+      "properties": {
+        "manager_OAA_idp": "scary.canary.auto@smurfitwestrock.com"
+      }
+    },
+    {
+      "type": "AzureADUser",
+      "id": "1d628b28-0882-456f-b89b-116b158004fa",
+      "data_source_id": "9393a1d3-5429-4326-b48b-4d5e8fa2ddac",
+      "properties": {
+        "manager_OAA_idp": "skip.volu@smurfitwestrock.com"
+      }
+    },
+    {
+      "type": "AzureADUser",
+      "id": "7813ee62-c8b8-4ef1-8a48-e31d631eeaa6",
+      "data_source_id": "9393a1d3-5429-4326-b48b-4d5e8fa2ddac",
+      "properties": {
+        "manager_OAA_idp": "sour.vick@smurfitwestrock.com"
+      }
+    },
+    {
+      "type": "AzureADUser",
+      "id": "3cacb2d8-9444-4137-80b4-e71950ddccea",
+      "data_source_id": "9393a1d3-5429-4326-b48b-4d5e8fa2ddac",
+      "properties": {
+        "manager_OAA_idp": "svolu@smurfitwestrock.com"
+      }
+    },
+    {
+      "type": "AzureADUser",
+      "id": "a14d0e58-e285-4a9b-9b66-8da2b4477fef",
+      "data_source_id": "9393a1d3-5429-4326-b48b-4d5e8fa2ddac",
+      "properties": {
+        "manager_OAA_idp": "sourabh.volu@smurfitwestrock.com"
+      }
+    },
+    {
+      "type": "AzureADUser",
+      "id": "05381ba2-41ea-45ac-ae51-0d62ae272389",
+      "data_source_id": "d967f42b-dfd3-4cf1-b636-3df31bcc1b66",
+      "properties": {
+        "manager_OAA_idp": "steve.telecom@smurfitwestrock.com"
+      }
+    },
+    {
+      "type": "AzureADUser",
+      "id": "194ada61-6bac-4c9b-b42d-351395bd9bab",
+      "data_source_id": "9393a1d3-5429-4326-b48b-4d5e8fa2ddac",
+      "properties": {
+        "manager_OAA_idp": "SuperAdmin@smurfitwestrock.com"
+      }
+    },
+    {
+      "type": "AzureADUser",
+      "id": "8081a649-2642-4950-a1cb-a84d0a2c9d73",
+      "data_source_id": "d967f42b-dfd3-4cf1-b636-3df31bcc1b66",
+      "properties": {
+        "manager_OAA_idp": "Surendra.Vitla@smurfitwestrock.com"
+      }
+    },
+    {
+      "type": "AzureADUser",
+      "id": "b9b82e9e-2b1a-461e-acce-3d525858583a",
+      "data_source_id": "9393a1d3-5429-4326-b48b-4d5e8fa2ddac",
+      "properties": {
+        "manager_OAA_idp": "susan.clark@smurfitwestrock.com"
+      }
+    },
+    {
+      "type": "AzureADUser",
+      "id": "82c13d45-c997-4f92-9538-2aef394568bf",
+      "data_source_id": "9393a1d3-5429-4326-b48b-4d5e8fa2ddac",
+      "properties": {
+        "manager_OAA_idp": "Suzy.Volu@smurfitwestrock.com"
+      }
+    },
+    {
+      "type": "AzureADUser",
+      "id": "21809628-d043-4a87-965e-e64ff181d657",
+      "data_source_id": "9393a1d3-5429-4326-b48b-4d5e8fa2ddac",
+      "properties": {
+        "manager_OAA_idp": "svc_abc_123@smurfitwestrock.com"
+      }
+    },
+    {
+      "type": "AzureADUser",
+      "id": "a4721b4f-20d5-4c96-adc8-a9d35fca23e3",
+      "data_source_id": "9393a1d3-5429-4326-b48b-4d5e8fa2ddac",
+      "properties": {
+        "manager_OAA_idp": "svc_application_prd@smurfitwestrock.com"
+      }
+    },
+    {
+      "type": "AzureADUser",
+      "id": "d32bde3a-5b5a-49b4-b147-9c009dd3c93d",
+      "data_source_id": "9393a1d3-5429-4326-b48b-4d5e8fa2ddac",
+      "properties": {
+        "manager_OAA_idp": "svc_application_stg@smurfitwestrock.com"
+      }
+    },
+    {
+      "type": "AzureADUser",
+      "id": "c3953791-91b6-49ca-80dc-4432c4edd1a3",
+      "data_source_id": "9393a1d3-5429-4326-b48b-4d5e8fa2ddac",
+      "properties": {
+        "manager_OAA_idp": "svc_application_xyz@smurfitwestrock.com"
+      }
+    },
+    {
+      "type": "AzureADUser",
+      "id": "3338cd0a-0092-4243-9457-c262c7db1f7f",
+      "data_source_id": "9393a1d3-5429-4326-b48b-4d5e8fa2ddac",
+      "properties": {
+        "manager_OAA_idp": "svc_coffeemachine@smurfitwestrock.com"
+      }
+    },
+    {
+      "type": "AzureADUser",
+      "id": "4ae95cf8-aec1-476f-b4b0-124977ad0acc",
+      "data_source_id": "9393a1d3-5429-4326-b48b-4d5e8fa2ddac",
+      "properties": {
+        "manager_OAA_idp": "t.w@smurfitwestrock.com"
+      }
+    },
+    {
+      "type": "AzureADUser",
+      "id": "8aa1b833-195b-4e73-8858-61f8b5e816ac",
+      "data_source_id": "d967f42b-dfd3-4cf1-b636-3df31bcc1b66",
+      "properties": {
+        "manager_OAA_idp": "test.#emp-1760566377418.auto@smurfitwestrock.com"
+      }
+    },
+    {
+      "type": "AzureADUser",
+      "id": "1abc262c-d144-4797-a023-40b82b232d40",
+      "data_source_id": "d967f42b-dfd3-4cf1-b636-3df31bcc1b66",
+      "properties": {
+        "manager_OAA_idp": "test1@smurfitwestrock.com"
+      }
+    },
+    {
+      "type": "AzureADUser",
+      "id": "c2e699ca-805b-45bc-8a39-f5f424c017b5",
+      "data_source_id": "d967f42b-dfd3-4cf1-b636-3df31bcc1b66",
+      "properties": {
+        "manager_OAA_idp": "test.tech@smurfitwestrock.com"
+      }
+    },
+    {
+      "type": "AzureADUser",
+      "id": "e69da2d7-5da8-4224-a7e5-877574a9ab63",
+      "data_source_id": "d967f42b-dfd3-4cf1-b636-3df31bcc1b66",
+      "properties": {
+        "manager_OAA_idp": "test2@smurfitwestrock.com"
+      }
+    },
+    {
+      "type": "AzureADUser",
+      "id": "7f564e1e-036e-448f-8f51-1eed68f427e3",
+      "data_source_id": "d967f42b-dfd3-4cf1-b636-3df31bcc1b66",
+      "properties": {
+        "manager_OAA_idp": "test3@smurfitwestrock.com"
+      }
+    },
+    {
+      "type": "AzureADUser",
+      "id": "95056a24-9397-4aa9-a37f-c119b8af030f",
+      "data_source_id": "d967f42b-dfd3-4cf1-b636-3df31bcc1b66",
+      "properties": {
+        "manager_OAA_idp": "test4@smurfitwestrock.com"
+      }
+    },
+    {
+      "type": "AzureADUser",
+      "id": "c8d3a9b6-0ce3-4323-a254-7cc1f4437160",
+      "data_source_id": "d967f42b-dfd3-4cf1-b636-3df31bcc1b66",
+      "properties": {
+        "manager_OAA_idp": "test5@smurfitwestrock.com"
+      }
+    },
+    {
+      "type": "AzureADUser",
+      "id": "3ac385a7-21e6-4ed6-aebf-bc737dec02af",
+      "data_source_id": "d967f42b-dfd3-4cf1-b636-3df31bcc1b66",
+      "properties": {
+        "manager_OAA_idp": "thao.sports@smurfitwestrock.com"
+      }
+    },
+    {
+      "type": "AzureADUser",
+      "id": "67c9fdf1-febd-4f0d-a60e-624fb2aa03ed",
+      "data_source_id": "d967f42b-dfd3-4cf1-b636-3df31bcc1b66",
+      "properties": {
+        "manager_OAA_idp": "thao.le@smurfitwestrock.com"
+      }
+    },
+    {
+      "type": "AzureADUser",
+      "id": "2c7bd5cc-487f-418f-bb09-955f886cc46d",
+      "data_source_id": "d967f42b-dfd3-4cf1-b636-3df31bcc1b66",
+      "properties": {
+        "manager_OAA_idp": "theodore.telecom@smurfitwestrock.com"
+      }
+    },
+    {
+      "type": "AzureADUser",
+      "id": "10d04477-2a79-46fc-be60-78bcbf74a802",
+      "data_source_id": "d967f42b-dfd3-4cf1-b636-3df31bcc1b66",
+      "properties": {
+        "manager_OAA_idp": "tburke@smurfitwestrock.com"
+      }
+    },
+    {
+      "type": "AzureADUser",
+      "id": "f964b164-0781-4d9b-a2e8-38d5258684f9",
+      "data_source_id": "9393a1d3-5429-4326-b48b-4d5e8fa2ddac",
+      "properties": {
+        "manager_OAA_idp": "thomas.miller@smurfitwestrock.com"
+      }
+    },
+    {
+      "type": "AzureADUser",
+      "id": "c05d751a-8257-4829-8989-189203adb59a",
+      "data_source_id": "d967f42b-dfd3-4cf1-b636-3df31bcc1b66",
+      "properties": {
+        "manager_OAA_idp": "tim.luke@smurfitwestrock.com"
+      }
+    },
+    {
+      "type": "AzureADUser",
+      "id": "62d464bf-74dc-4db5-a386-b283cb6c473b",
+      "data_source_id": "8ba6737d-7d21-4a9b-961b-7c56ae431e71",
+      "properties": {
+        "manager_OAA_idp": "Timmy.Hawkins@smurfitwestrock.com"
+      }
+    },
+    {
+      "type": "AzureADUser",
+      "id": "1c06ce30-d9c4-4e3a-b1f0-d8552b5d7149",
+      "data_source_id": "9393a1d3-5429-4326-b48b-4d5e8fa2ddac",
+      "properties": {
+        "manager_OAA_idp": "tina.wells@smurfitwestrock.com"
+      }
+    },
+    {
+      "type": "AzureADUser",
+      "id": "b8cd0d1e-8aa7-4766-acf5-491f30047d1e",
+      "data_source_id": "d967f42b-dfd3-4cf1-b636-3df31bcc1b66",
+      "properties": {
+        "manager_OAA_idp": "trismer.agri@smurfitwestrock.com"
+      }
+    },
+    {
+      "type": "AzureADUser",
+      "id": "731b0c54-7e25-4862-b266-99f756da5a2b",
+      "data_source_id": "9393a1d3-5429-4326-b48b-4d5e8fa2ddac",
+      "properties": {
+        "manager_OAA_idp": "vick.sour@smurfitwestrock.com"
+      }
+    },
+    {
+      "type": "AzureADUser",
+      "id": "6b87bec2-8980-4999-8af1-089a8097fe5f",
+      "data_source_id": "9393a1d3-5429-4326-b48b-4d5e8fa2ddac",
+      "properties": {
+        "manager_OAA_idp": "victor.nguyen@smurfitwestrock.com"
+      }
+    },
+    {
+      "type": "AzureADUser",
+      "id": "67915709-d193-483b-bb75-06f7c8089552",
+      "data_source_id": "748b21ea-959b-46ac-a2b4-6ed2f7858540",
+      "properties": {
+        "manager_OAA_idp": "wanda.audit@smurfitwestrock.com"
+      }
+    },
+    {
+      "type": "AzureADUser",
+      "id": "7c28604f-808a-4df4-8194-45dacef705ee",
+      "data_source_id": "d967f42b-dfd3-4cf1-b636-3df31bcc1b66",
+      "properties": {
+        "manager_OAA_idp": "wes.telecom@smurfitwestrock.com"
+      }
+    },
+    {
+      "type": "AzureADUser",
+      "id": "b9bf7e49-cda7-443d-a561-8068c0d271c2",
+      "data_source_id": "d967f42b-dfd3-4cf1-b636-3df31bcc1b66",
+      "properties": {
+        "manager_OAA_idp": "wmoore8@smurfitwestrock.com"
+      }
+    },
+    {
+      "type": "AzureADUser",
+      "id": "eff95442-d02b-4c85-a792-279e6c76ac30",
+      "data_source_id": "9393a1d3-5429-4326-b48b-4d5e8fa2ddac",
+      "properties": {
+        "manager_OAA_idp": "Zac.Volu@smurfitwestrock.com"
+      }
+    },
+    {
+      "type": "AzureADUser",
+      "id": "8131a888-8cb6-44ba-8c40-7acbecc30028",
+      "data_source_id": "d4f2730b-7151-4c31-8388-ca7e16ff224a",
+      "properties": {
+        "manager_OAA_idp": "zgwilson_gmail.com#EXT#@smurfitwestrock.com"
+      }
+    },
+    {
+      "type": "AzureADUser",
+      "id": "c95316e8-650f-4699-8d4c-fa091e4e03b6",
+      "data_source_id": "d967f42b-dfd3-4cf1-b636-3df31bcc1b66",
+      "properties": {
+        "manager_OAA_idp": "zachary.telecom@smurfitwestrock.com"
+      }
+    },
+    {
+      "type": "AzureADUser",
+      "id": "22bd0d26-4c08-4167-bb92-bf061119ac6d",
+      "data_source_id": "9393a1d3-5429-4326-b48b-4d5e8fa2ddac",
+      "properties": {
+        "manager_OAA_idp": "zara.ahmed@smurfitwestrock.com"
+      }
+    },
+    {
+      "type": "AzureADUser",
+      "id": "608ef12b-a430-4c98-b2a3-6338513fc801",
+      "data_source_id": "d4f2730b-7151-4c31-8388-ca7e16ff224a",
+      "properties": {
+        "manager_OAA_idp": "ZoeAdmin@smurfitwestrock.com"
+      }
+    }
+  ]
+}

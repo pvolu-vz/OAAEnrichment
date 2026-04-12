@@ -683,3 +683,90 @@ if __name__ == "__main__":
     main()
     log.info("Completed OAA Enrichment Push")
 
+
+---
+
+## OAA Enrichment — Findings & Constraints (Lab-Tested April 2026)
+
+### Entity Enrichment Template — Supported Entity Types
+
+The `entity_enrichment` template **only supports native/built-in Veza entity types**. It does NOT support OAA custom entity types (dot-notation types like `OAA.<Provider>.<EntityType>`).
+
+**Works (HTTP 200):**
+- `AzureADUser`
+- `OktaUser`
+- `OktaApp`
+- `AwsIamRole`
+- `CustomApplication`
+- Any other native Veza graph entity type
+
+**Does NOT work (HTTP 500):**
+- `OAA.GICO.User`
+- `OAA.<AnyProvider>.User`
+- Any OAA custom entity sub-type with dot notation (`OAALocalUser`, `CustomApplicationLocalUser`, `local_user`, etc.)
+
+This is a **Veza platform limitation**, not a script bug. The enrichment push returns HTTP 200 with no warnings for native types but consistently returns HTTP 500 for all OAA custom entity type variants.
+
+### Enrichment Provider Architecture
+
+- An enrichment provider uses `custom_template="entity_enrichment"` and is **separate** from the application provider it enriches.
+- You cannot push enrichment payloads (`enriched_entity_property_definitions`) to a provider created with `custom_application` template — this returns HTTP 400.
+- Create/get pattern:
+  ```python
+  provider = veza.get_provider(name=provider_name)
+  if not provider:
+      provider = veza.create_provider(name=provider_name, custom_template="entity_enrichment")
+  ```
+
+### Enrichment Payload Structure
+
+```json
+{
+  "enriched_entity_property_definitions": [
+    {
+      "entity_type": "AzureADUser",
+      "enriched_properties": {
+        "new_email": "STRING"
+      }
+    }
+  ],
+  "enriched_entities": [
+    {
+      "type": "AzureADUser",
+      "id": "<graph-entity-uuid>",
+      "data_source_id": "<datasource-uuid-from-entity-properties>",
+      "properties": {
+        "new_email": "value"
+      }
+    }
+  ]
+}
+```
+
+**Key fields:**
+- `id` — The graph entity UUID (from query results `entity.get("id")`)
+- `data_source_id` — The datasource UUID from `entity.get("properties", {}).get("datasource_id")` — this is the **original** data source of the entity being enriched, NOT the enrichment provider's data source
+- Supported property types: `STRING`, `STRING_LIST`, `BOOLEAN`, `NUMBER`, `TIMESTAMP`
+
+### Enrichment Property Naming
+
+Once pushed and extracted, enriched properties appear on entities with the prefix `enrichmentprop_`. For example:
+- Pushed as `granted_scopes` → visible as `enrichmentprop_granted_scopes`
+- Pushed as `new_email` → visible as `enrichmentprop_new_email`
+
+### Graph Extraction Timing
+
+After a successful push (HTTP 200), the enrichment data source status will be `EXTRACTION_PENDING`. The enriched properties will **not** appear on entities immediately — they require a graph extraction cycle to complete. This can take seconds to minutes depending on tenant load.
+
+### Querying Entities for Enrichment
+
+When querying entities to enrich, use the assessment query API:
+- Endpoint: `POST /api/v1/assessments/query_spec:nodes?page_size=10000`
+- The `node_type` in the query must match the entity type you plan to enrich
+- Each returned entity provides `id` (graph UUID) and `properties.datasource_id` — both are required for the enrichment payload
+
+### Workaround for OAA Custom Entity Types
+
+Since enrichment doesn't work for OAA custom entity types (`OAA.X.Y`), alternatives:
+1. Add the property directly in the OAA custom application connector that creates the entity (push it as a custom property on the `local_user`, `local_group`, etc.)
+2. File a support request with Veza to add OAA custom entity type support to the enrichment template

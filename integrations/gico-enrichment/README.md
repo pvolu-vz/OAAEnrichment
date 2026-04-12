@@ -1,23 +1,25 @@
-# GICO Email Enrichment — Veza OAA Integration
+# Azure OAA Enrichment — Veza OAA Integration
 
 ## Overview
 
-This script enriches **OAA.GICO.User** entities already present in your Veza tenant with a new custom attribute called `new_email`. The value is derived entirely from data already in Veza — no external API calls to the GICO system are required.
+This script enriches **AzureADUser** entities already present in your Veza tenant with a new custom attribute called `OAA_idp`. The value is derived entirely from data already in Veza — no external API calls are required.
+
+The enrichment is pushed as a **separate enrichment provider** (using the `entity_enrichment` template), distinct from the Azure AD integration. You can optionally supply an existing provider ID to skip name-based lookup/creation.
 
 | Step | Action |
 |------|--------|
-| 1 | Query all `OAA.GICO.User` nodes from Veza via the Assessment Query API |
-| 2 | For each user, read the `native_id` property |
-| 3 | Construct `new_email = native_id + @smurfitwestrock.com` |
+| 1 | Query all `AzureADUser` nodes from Veza via the Assessment Query API |
+| 2 | For each user, read the `principal_name` property |
+| 3 | Construct `OAA_idp = local_part(principal_name) + @IDP_DOMAIN` |
 | 4 | Push the enriched attribute back to Veza using the OAA Enrichment template |
 
-After a successful run the `new_email` attribute will be visible on each GICO User node in the Veza Access Graph and available in queries, reports, and access reviews.
+After a successful run the `OAA_idp` attribute will be visible on each AzureADUser node in the Veza Access Graph and available in queries, reports, and access reviews.
 
 ### OAA Entity Mapping
 
-| Veza Node Type     | Enriched Attribute | Source Field | Derived Value                    |
-|--------------------|--------------------|--------------|----------------------------------|
-| `OAA.GICO.User`    | `new_email`        | `native_id`  | `<native_id>@smurfitwestrock.com` |
+| Veza Node Type       | Enriched Attribute | Source Field       | Derived Value                    |
+|----------------------|--------------------|--------------------|----------------------------------|
+| `AzureADUser`        | `OAA_idp`          | `principal_name`   | `<local_part>@smurfitwestrock.com` |
 
 ---
 
@@ -27,8 +29,8 @@ After a successful run the `new_email` attribute will be visible on each GICO Us
 |-------------|-------|
 | Python ≥ 3.8 | `python3 --version` |
 | Network access | Outbound HTTPS to your Veza tenant |
-| Veza API key | Must have OAA read + write (provider/datasource create) permissions |
-| GICO OAA provider | The `OAA.GICO` data source must already exist in your Veza tenant |
+| Veza API key | Must have OAA read + write permissions |
+| Enrichment provider | Created automatically, or supply an existing provider ID via `ENRICHMENT_PROVIDER_ID` |
 
 ---
 
@@ -48,13 +50,13 @@ pip install -r requirements.txt
 # 4. Configure credentials
 cp .env.example .env
 chmod 600 .env
-# Edit .env — fill in VEZA_URL and VEZA_API_KEY
+# Edit .env — fill in VEZA_URL, VEZA_API_KEY, and optionally other settings
 
 # 5. Dry-run first (no write to Veza)
-python3 gico_email_enrichment.py --dry-run
+python3 azure_oaa_enrichment.py --dry-run
 
 # 6. Push enrichment to Veza
-python3 gico_email_enrichment.py
+python3 azure_oaa_enrichment.py
 ```
 
 ---
@@ -65,8 +67,8 @@ python3 gico_email_enrichment.py
 
 ```bash
 sudo dnf install -y python3 python3-pip python3-venv
-python3 -m venv /opt/gico-enrichment/venv
-source /opt/gico-enrichment/venv/bin/activate
+python3 -m venv /opt/azure-oaa-enrichment/venv
+source /opt/azure-oaa-enrichment/venv/bin/activate
 pip install -r requirements.txt
 ```
 
@@ -74,8 +76,8 @@ pip install -r requirements.txt
 
 ```bash
 sudo apt-get install -y python3 python3-pip python3-venv
-python3 -m venv /opt/gico-enrichment/venv
-source /opt/gico-enrichment/venv/bin/activate
+python3 -m venv /opt/azure-oaa-enrichment/venv
+source /opt/azure-oaa-enrichment/venv/bin/activate
 pip install -r requirements.txt
 ```
 
@@ -84,7 +86,7 @@ pip install -r requirements.txt
 ## Usage
 
 ```
-python3 gico_email_enrichment.py [OPTIONS]
+python3 azure_oaa_enrichment.py [OPTIONS]
 ```
 
 ### CLI Arguments
@@ -92,8 +94,11 @@ python3 gico_email_enrichment.py [OPTIONS]
 | Argument | Required | Default | Description |
 |----------|----------|---------|-------------|
 | `--veza-host HOST` | No* | `VEZA_URL` env var | Veza tenant hostname (e.g. `acme.veza.com`) |
-| `--email-domain DOMAIN` | No | `@smurfitwestrock.com` | Domain suffix appended to `native_id` |
-| `--provider-name NAME` | No | `GICO Email Enrichment` | OAA provider name in the Veza UI |
+| `--idp-domain DOMAIN` | No | `IDP_DOMAIN` env var or `smurfitwestrock.com` | IDP domain to replace the existing domain in `principal_name` |
+| `--entity-type TYPE` | No | `ENTITY_TYPE` env var or `AzureADUser` | Veza entity type to enrich |
+| `--provider-name NAME` | No | `ENRICHMENT_PROVIDER_NAME` env var or `Azure Email Enrichment` | Name for the enrichment provider (`entity_enrichment` template) |
+| `--provider-id ID` | No | `ENRICHMENT_PROVIDER_ID` env var | Existing provider ID — skips name-based lookup/creation |
+| `--data-source-name NAME` | No | `ENRICHMENT_DATA_SOURCE_NAME` env var or `Azure Email Enrichment` | Data source name for the enrichment payload |
 | `--env-file PATH` | No | `.env` | Path to a dotenv credentials file |
 | `--dry-run` | No | `False` | Preview payload without pushing to Veza |
 | `--save-json` | No | `False` | Save enrichment payload to a local JSON file |
@@ -107,24 +112,32 @@ python3 gico_email_enrichment.py [OPTIONS]
 |----------|-------------|
 | `VEZA_URL` | Veza tenant hostname |
 | `VEZA_API_KEY` | Veza API key (always required) |
+| `IDP_DOMAIN` | IDP domain for principal_name replacement (default: `smurfitwestrock.com`) |
+| `ENTITY_TYPE` | Veza entity type to enrich (default: `AzureADUser`) |
+| `ENRICHMENT_PROVIDER_NAME` | Enrichment provider name (default: `Azure Email Enrichment`) |
+| `ENRICHMENT_PROVIDER_ID` | Existing provider ID — set to skip name-based lookup/creation |
+| `ENRICHMENT_DATA_SOURCE_NAME` | Data source name under the provider (default: `Azure Email Enrichment`) |
 
 ### Example Commands
 
 ```bash
 # Standard run using .env file
-python3 gico_email_enrichment.py
+python3 azure_oaa_enrichment.py
 
 # Explicit host, debug logging
-python3 gico_email_enrichment.py --veza-host acme.veza.com --log-level DEBUG
+python3 azure_oaa_enrichment.py --veza-host acme.veza.com --log-level DEBUG
 
 # Dry-run with JSON payload saved to disk
-python3 gico_email_enrichment.py --dry-run --save-json
+python3 azure_oaa_enrichment.py --dry-run --save-json
 
-# Override the email domain
-python3 gico_email_enrichment.py --email-domain @example.com
+# Override the IDP domain
+python3 azure_oaa_enrichment.py --idp-domain example.com
+
+# Use an existing provider ID (skips name lookup)
+python3 azure_oaa_enrichment.py --provider-id abc123-def456
 
 # Use a non-default .env file
-python3 gico_email_enrichment.py --env-file /etc/gico-enrichment/prod.env
+python3 azure_oaa_enrichment.py --env-file /etc/azure-oaa-enrichment/prod.env
 ```
 
 ---
@@ -134,16 +147,16 @@ python3 gico_email_enrichment.py --env-file /etc/gico-enrichment/prod.env
 ### Service Account Setup
 
 ```bash
-sudo useradd -r -s /bin/bash -m -d /opt/gico-enrichment gico-enrichment
-sudo mkdir -p /opt/gico-enrichment/{scripts,logs}
-sudo chown -R gico-enrichment:gico-enrichment /opt/gico-enrichment
+sudo useradd -r -s /bin/bash -m -d /opt/azure-oaa-enrichment azure-oaa-enrichment
+sudo mkdir -p /opt/azure-oaa-enrichment/{scripts,logs}
+sudo chown -R azure-oaa-enrichment:azure-oaa-enrichment /opt/azure-oaa-enrichment
 ```
 
 ### File Permissions
 
 ```bash
-chmod 600 /opt/gico-enrichment/scripts/.env
-chmod 700 /opt/gico-enrichment/scripts
+chmod 600 /opt/azure-oaa-enrichment/scripts/.env
+chmod 700 /opt/azure-oaa-enrichment/scripts
 ```
 
 ### SELinux (RHEL)
@@ -151,40 +164,40 @@ chmod 700 /opt/gico-enrichment/scripts
 ```bash
 getenforce   # check status
 # If Enforcing, restore context after placing files:
-restorecon -Rv /opt/gico-enrichment/
+restorecon -Rv /opt/azure-oaa-enrichment/
 ```
 
 ### Cron Schedule
 
-Create `/etc/cron.d/gico-enrichment`:
+Create `/etc/cron.d/azure-oaa-enrichment`:
 
 ```cron
-# Run GICO email enrichment daily at 02:00
-0 2 * * * gico-enrichment /opt/gico-enrichment/scripts/run.sh >> /opt/gico-enrichment/logs/gico-enrichment.log 2>&1
+# Run Azure OAA enrichment daily at 02:00
+0 2 * * * azure-oaa-enrichment /opt/azure-oaa-enrichment/scripts/run.sh >> /opt/azure-oaa-enrichment/logs/azure-oaa-enrichment.log 2>&1
 ```
 
-Wrapper script `/opt/gico-enrichment/scripts/run.sh`:
+Wrapper script `/opt/azure-oaa-enrichment/scripts/run.sh`:
 
 ```bash
 #!/bin/bash
 set -euo pipefail
-source /opt/gico-enrichment/venv/bin/activate
-python3 /opt/gico-enrichment/scripts/gico_email_enrichment.py \
-  --env-file /opt/gico-enrichment/scripts/.env
+source /opt/azure-oaa-enrichment/venv/bin/activate
+python3 /opt/azure-oaa-enrichment/scripts/azure_oaa_enrichment.py \
+  --env-file /opt/azure-oaa-enrichment/scripts/.env
 ```
 
 ### Log Rotation
 
-Create `/etc/logrotate.d/gico-enrichment`:
+Create `/etc/logrotate.d/azure-oaa-enrichment`:
 
 ```
-/opt/gico-enrichment/logs/*.log {
+/opt/azure-oaa-enrichment/logs/*.log {
     daily
     rotate 14
     compress
     missingok
     notifempty
-    create 640 gico-enrichment gico-enrichment
+    create 640 azure-oaa-enrichment azure-oaa-enrichment
 }
 ```
 
@@ -195,7 +208,7 @@ Create `/etc/logrotate.d/gico-enrichment`:
 - Store `VEZA_API_KEY` only in the `.env` file; never commit it to source control.
 - Use `chmod 600 .env` to restrict read access to the service account only.
 - Rotate the Veza API key regularly and update `.env` accordingly.
-- The script performs only write operations to the enrichment provider — it does not modify existing GICO user records or permissions.
+- The script performs only write operations to the enrichment provider — it does not modify existing AzureADUser records or permissions.
 
 ---
 
@@ -205,8 +218,8 @@ Create `/etc/logrotate.d/gico-enrichment`:
 |---------|-------------|-----|
 | `Missing required configuration: VEZA_API_KEY` | Env var not set | Set `VEZA_API_KEY` in `.env` or shell |
 | `Missing required configuration: --veza-host / VEZA_URL` | Host not provided | Set `VEZA_URL` in `.env` or pass `--veza-host` |
-| `Received 0 OAA.GICO.User entities` | GICO datasource not in Veza | Confirm GICO OAA integration has run successfully |
-| `Skipped N entities with no native_id` | GICO users missing native_id | Check GICO OAA connector — native_id must be populated |
+| `Received 0 AzureADUser entities` | Azure AD datasource not in Veza | Confirm Azure AD integration has run successfully |
+| `Skipped N entities with no principal_name` | Users missing principal_name | Check Azure AD connector — principal_name must be populated |
 | `Veza push_metadata failed: 401` | Invalid or expired API key | Regenerate the Veza API key |
 | `Veza push_metadata failed: 403` | Insufficient permissions | Ensure the API key has OAA provider create/write permissions |
 | `ModuleNotFoundError: oaaclient` | venv not activated or deps not installed | `source venv/bin/activate && pip install -r requirements.txt` |
@@ -214,6 +227,19 @@ Create `/etc/logrotate.d/gico-enrichment`:
 ---
 
 ## Changelog
+
+### v1.2 — 2026-04-12
+- Renamed script from `gico_email_enrichment.py` to `azure_oaa_enrichment.py`
+- All configuration now driven by `.env` variables (with CLI overrides)
+- Added `ENRICHMENT_PROVIDER_ID` to skip name-based provider lookup/creation
+- Added `ENTITY_TYPE` and `ENRICHMENT_PROVIDER_NAME` / `ENRICHMENT_DATA_SOURCE_NAME` env vars
+- Fixed entity type documentation to match implementation (`AzureADUser`)
+
+### v1.1 — 2026-04-12
+- Renamed enrichment attribute from `new_email` to `OAA_idp`
+- Changed source field from `name` to `principal_name` with domain replacement
+- Added `IDP_DOMAIN` environment variable for configurable domain
+- CLI flag changed from `--email-domain` to `--idp-domain`
 
 ### v1.0 — 2026-04-10
 - Initial release: query `OAA.GICO.User` entities, enrich with `new_email = native_id + @smurfitwestrock.com`
