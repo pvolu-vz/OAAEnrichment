@@ -3,3 +3,5 @@ integrations/*/Samples/
 venv/
 .DS_Store
 *.json
+integrations/*/logs/
+*.log
