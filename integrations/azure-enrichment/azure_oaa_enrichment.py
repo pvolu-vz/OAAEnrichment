@@ -15,7 +15,6 @@ Data flow:
 import argparse
 import json
 import logging
-import math
 import os
 import sys
 
@@ -35,7 +34,6 @@ DEFAULT_IDP_DOMAIN = "smurfitwestrock.com"
 DEFAULT_PROVIDER_NAME = "Azure Email Enrichment"
 DEFAULT_DATA_SOURCE_NAME = "Azure Email Enrichment"
 DEFAULT_AZURE_DATASOURCE_NAME: Optional[str] = None
-PUSH_BATCH_SIZE = 10_000  # Max entities per push_metadata call to avoid timeouts
 
 # ---------------------------------------------------------------------------
 # Logging setup
@@ -307,59 +305,30 @@ def run(
             provider_id = provider["id"]
             log.info("Created enrichment provider '%s' (id: %s)", provider_name, provider_id)
 
-    # Push enrichment data in batches to avoid timeouts / payload size limits.
-    # Each batch is pushed to a distinct data source name so that subsequent
-    # batches do not overwrite earlier ones (push_metadata replaces the full
-    # data source on each call).
-    all_entities = payload["enriched_entities"]
-    property_defs = payload["enriched_entity_property_definitions"]
-    total_batches = math.ceil(entity_count / PUSH_BATCH_SIZE)
+    log.info("Pushing %d entities to data source '%s'...", entity_count, data_source_name)
 
-    for batch_idx in range(total_batches):
-        start = batch_idx * PUSH_BATCH_SIZE
-        end = min(start + PUSH_BATCH_SIZE, entity_count)
-        batch_entities = all_entities[start:end]
-
-        # Use the original name for single-batch runs; append suffix otherwise
-        if total_batches == 1:
-            ds_name = data_source_name
-        else:
-            # Use 'of' instead of '/' to avoid invalid character
-            ds_name = f"{data_source_name} (batch {batch_idx + 1} of {total_batches})"
-
-        batch_payload = {
-            "enriched_entity_property_definitions": property_defs,
-            "enriched_entities": batch_entities,
-        }
-
-        log.info(
-            "Pushing batch %d/%d (%d entities) to data source '%s'...",
-            batch_idx + 1, total_batches, len(batch_entities), ds_name,
+    try:
+        veza.push_metadata(
+            provider_name=provider_name,
+            data_source_name=data_source_name,
+            metadata=payload,
+            save_json=save_json,
         )
-
-        try:
-            veza.push_metadata(
-                provider_name=provider_name,
-                data_source_name=ds_name,
-                metadata=batch_payload,
-                save_json=save_json,
-            )
-        except OAAResponseError as exc:
-            log.error(
-                "Veza push_metadata failed (batch %d/%d): %s — %s (HTTP %s)",
-                batch_idx + 1, total_batches,
-                exc.error,
-                exc.message,
-                exc.status_code,
-            )
-            if hasattr(exc, "details"):
-                for detail in exc.details:
-                    log.error("  Detail: %s", detail)
-            sys.exit(1)
+    except OAAResponseError as exc:
+        log.error(
+            "Veza push_metadata failed: %s — %s (HTTP %s)",
+            exc.error,
+            exc.message,
+            exc.status_code,
+        )
+        if hasattr(exc, "details"):
+            for detail in exc.details:
+                log.error("  Detail: %s", detail)
+        sys.exit(1)
 
     log.info(
-        "Successfully pushed manager_OAA_idp enrichment for %d Azure AD users to Veza (%d batch%s)",
-        entity_count, total_batches, "es" if total_batches > 1 else "",
+        "Successfully pushed manager_OAA_idp enrichment for %d Azure AD users to Veza",
+        entity_count,
     )
 
 
